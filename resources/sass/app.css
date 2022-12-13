@@ -1,0 +1,54 @@
+/*
+Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.
+       Load paths:
+         D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/Configuration/SassFrameworks/bourbon
+         D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/Configuration/SassFrameworks/neat
+         D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/Configuration/SassFrameworks/base
+        on line 8 of D:\OpenServer\domains\upminder\resources\sass\app.scss
+
+3: 
+4: // Variables
+5: @import 'variables';
+6: 
+7: // Bootstrap
+8: @import '~bootstrap/scss/bootstrap';
+
+Backtrace:
+D:\OpenServer\domains\upminder\resources\sass\app.scss:8
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/import_node.rb:67:in `rescue in import'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/import_node.rb:45:in `import'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/import_node.rb:28:in `imported_file'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/import_node.rb:37:in `css_import?'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:313:in `visit_import'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `block in with_base'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/stack.rb:115:in `with_frame'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/stack.rb:79:in `with_base'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:160:in `visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `map'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/base.rb:36:in `visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:159:in `visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/visitors/perform.rb:8:in `visit'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/root_node.rb:36:in `css_tree'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/tree/root_node.rb:20:in `render'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/engine.rb:281:in `render'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:400:in `run'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/sass_scss.rb:63:in `process_result'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/base.rb:52:in `parse'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/lib/sass/exec/base.rb:19:in `parse!'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/lib/ruby/gems/2.4.0/gems/sass-3.4.24/bin/sass:13:in `<top (required)>'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/bin/sass:22:in `load'
+D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/ruby/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ~bootstrap/scss/bootstrap.\A        Load paths:\A          D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/Configuration/SassFrameworks/bourbon\A          D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/Configuration/SassFrameworks/neat\A          D:/distr/Portable Adobe Dreamweaver/App/Dreamweaver/Configuration/SassFrameworks/base\A         on line 8 of D:\OpenServer\domains\upminder\resources\sass\app.scss\A \A 3: \A 4: // Variables\A 5: @import 'variables';\A 6: \A 7: // Bootstrap\A 8: @import '~bootstrap/scss/bootstrap';"; }

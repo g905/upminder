@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+* {
+	outline: none;
+	box-sizing: border-box;
+}
+
+body {
+	min-width: 100vw;
+	min-height: 100vh;
+	font-family: 'Montserrat', sans-serif;
+	background: rgb(132,82,201);
+	background: linear-gradient(15deg, rgba(132,82,201,1) 0%, rgba(232,118,236,1) 45%, rgba(232,118,236,1) 88%, rgba(205,0,255,1) 100%);
+}
+
+.btn {
+	display: inline-block;
+	padding: 15px 45px;
+	background: #333;
+	color: white;
+	border-radius: 4px;
+	border: none;
+	font-weight: 700;
+	text-decoration: none;
+}
+.btn.btn_flat {
+	background: #383838;
+	//background: linear-gradient(159deg, rgba(51,26,84,1) 0%, rgba(78,110,154,1) 45%, rgba(61,23,138,1) 100%);
+}
+.btn.btn_flat:hover {
+	background: rgb(132, 82, 201);
+}
+
+.page {
+	min-width: 100vw;
+	min-height: 100vh;
+}
+.page.centered {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.col_left, .col_right {
+	width: 50%;
+	background: white;
+}
+.col_form form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.logo {
+	color: white;
+	text-decoration: none;
+	font-size: 46px;
+	letter-spacing: -3px;
+	font-weight: 400;
+	text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+.logo span {
+	font-weight: 700;
+	opacity: 0.7;
+}
+
+.photo_editor {
+	width: 100%;
+	height: 100%;
+	margin: 30px 0;
+	background: rgba(0, 0, 0, 0.03);
+	text-align: center;
+	padding: 30px 0;
+	color: #333;
+	font-size: 16px;
+	border: 2px dashed rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	overflow: hidden;
+}
+.photo {
+	width: 80%;
+	height: 240px;
+	overflow: hidden;
+	text-align: center;
+	background: white;
+}
+.photo img {
+	width: auto;
+	height: 100%;
+}
+.tools {
+	margin: 20px 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	border-radius: 6px;
+	overflow: hidden;
+}
+.tools li {
+	width: 25%;
+}
+.tools li a {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	text-align: center;
+	text-decoration: none;
+	background: #383838;
+	color: white;
+	border-right: 1px solid white;
+}
+.tools li:last-child a {
+	border-right: none;
+}
+
+.drop_area {
+	width: 100%;
+	height: 100%;
+	margin: 30px 0;
+	background: rgba(0, 0, 0, 0.03);
+	text-align: center;
+	padding: 30px 0;
+	color: #333;
+	font-size: 16px;
+	border: 2px dashed rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.drop_area input[type=file] {
+	display: none;
+}
+.drop_area .btn_flat {
+	max-width: 50%;
+	margin-top: 20px;
+}
+
+.desk_cols h2 {
+	font-weight: 300;
+	font-size: 19px;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+	display: block;
+	margin: 30px 0;
+}
+.desk_cols {
+	width: 90vw;
+	max-width: 1024px;
+	height: 80vh;
+	min-height: 450px;
+	border-radius: 6px;
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.desk_cols .col_left, .desk_cols .col_right {
+	padding: 50px 40px;
+}
+.desk_cols .col_left {
+	background: rgb(51,26,84);
+	background: linear-gradient(159deg, rgba(51,26,84,1) 0%, rgba(78,110,154,1) 45%, rgba(61,23,138,1) 100%);
+	color: white;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.desk_cols .col_right {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 15px;
+}
+*.loading:before {
+	content: '';
+	display: block;
+	background-color: rgba(255, 255, 255, 0.9);
+	background-image: url('../img/loader.gif');
+	background-position: 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+}
+*.loading {
+	position: relative;
+}
+
+.photo_editor h2 {
+	text-shadow: none;
+}
+
+.photos {
+	display: flex;
+	justify-content: space-between;
+	height: 140px;
+	width: 100%;
+	margin: 0 0 20px 0;
+	padding: 0 30px;
+}
+.photos h2 {
+	display: block;
+	margin-bottom: 20px;
+}
+.photos .photo {
+	width: 32%;
+	height: 140px;
+	background-size: cover;
+	display: block;
+	border: 2px solid white;
+}
+.photos .photo.selected {
+	border: 2px solid rgb(183, 33, 98);
+}
+
+@media (max-width: 501px) {
+	
+	.page.centered {
+		display: block;
+	}
+	.drop_area {
+		color: white;
+	}
+	.desk_cols {
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		min-height: 100vh;
+		border-radius: 0;
+		border: none;
+		flex-direction: column;
+		background: none;
+		box-shadow: none;
+		justify-content: center;
+	}
+	.desk_cols .col_left, .desk_cols .col_right {
+		width: 100%;
+		height: 50%;
+		padding: 0 20px;
+	}
+	.desk_cols .col_left {
+		align-items: center;
+		text-align: center;
+		background: none;
+	}
+	.desk_cols .col_right {
+		background: none;
+	}
+	.drop_area .btn_flat {
+		max-width: 100%;
+	}
+	body.home {
+		overflow: hidden;
+		background: linear-gradient(159deg, rgba(51,26,84,1) 0%, rgba(78,110,154,1) 45%, rgba(61,23,138,1) 100%);
+	}
+	
+}

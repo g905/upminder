@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<!-- Обязательные метатеги -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="less/main.css?v=2" rel="stylesheet" >
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+
+<!-- Дополнительный JavaScript; выберите один из двух! -->
+
+<!-- Вариант 1: Bootstrap в связке с Popper -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<title>Главная</title>
+</head>
+<body>
+<div class="dark_block_index">
+  <div class="d-none d-sm-block"  >
+  
+     <div  class="left_block heading">
+        <div class="white_block_index  "><a href=index.html><img src="images/logodark.svg" width="152px;"></a>
+          <h1> Менторы и исполнители <br>
+            <span class=green>в одном месте</span> </h1>
+          <div class=desc>Эксперты найдут решение</div>
+          <div class="row">
+            <div class="col-xs-6 col-md-6 col-lg-7 col-xl-9" style="border:0px solid red; padding-right:10px !important">
+              <input class="def search search_index" placeholder="С какой сферы или задачи начнём?">
+            </div>
+            <div class="col-xs-6 col-md-6 col-lg-5 col-xl-3"  style="border:0px solid red">
+              <button class="def search"  onclick="document.location='listing.html'">Погнали!</button>
+            </div>
+          </div>
+          <div class=desc>Дизайн, маркетинг, IT  и не только!</div>
+        </div>
+      </div>
+      <div   class=right_block>
+        <div class="d-flex  justify-content-center " style=" position: absolute; z-index: 1000; right:0px; width: 50%; top:30px;">
+          <nav class="navbar navbar-expand-md navbar-dark d-none d-md-block " aria-label="Fourth navbar example"  >
+            <div class="collapse navbar-collapse" id="navbarsExample04"  >
+              <ul class="navbar-nav mb-2 mb-md-0"  >
+                <li class="nav-item"> <a class="nav-link" href="listing.html">Каталог менторов</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="mentors.html">Как стать ментором</a> </li>
+                <li class="nav-item"> <a class="nav-link" href="about.html">Как это работает</a> </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        
+        <!-- карусель -->
+        
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class=img></div>
+              <div class="carousel-caption">
+                <h5>Андрей Васильчук</h5>
+                <p>Front-end разработчик</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class=img></div>
+              <div class="carousel-caption">
+                <h5>Андрей Васильчук</h5>
+                <p>Front-end разработчик</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class=img></div>
+              <div class="carousel-caption">
+                <h5>Андрей Васильчук</h5>
+                <p>Front-end разработчик</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+  </div>
+    
+    <div class=clearfix></div>
+  <div class="d-block d-sm-none" >
+    <div class="white_block_index" > <img src="images/logodark.svg" width="200px;">
+      <h1> Менторы и исполнители <br>
+        <span class=green>в одном месте</span> </h1>
+      <div class=desc>Эксперты найдут решение</div>
+     
+        <div style=" position: relative">
+        <input class="def search search_index" placeholder="поиск сферы или задачи">
+      <button class="def search" style="position: absolute; z-index: 2; margin: 0px; right:5px; top:5px; bottom:5px; padding: 0px;"><img src="images/search.svg"></button>
+         </div>
+        
+        
+        
+      <div class=desc>Дизайн, маркетинг, IT  и не только!</div>
+    </div>
+    
+    <!--карусель -->
+    
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class=img></div>
+          <div class="carousel-caption">
+            <h5>Андрей Васильчук</h5>
+            <p>Front-end разработчик</p>
+          </div>
+        </div>
+        <div class=img></div>
+        <div class="carousel-item">
+          <div class=img></div>
+          <div class="carousel-caption">
+            <h5>Андрей Васильчук</h5>
+            <p>Front-end разработчик</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class=img></div>
+          <div class="carousel-caption">
+            <h5>Андрей Васильчук</h5>
+            <p>Front-end разработчик</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- третий блок -->
+  
+<div class=index_block>
+    
+    
+    
+  <div class="text_block">
+    <div class=container-fluid>
+      <div class="row">
+        <div class="col-lg-5 d-none d-md-block order-lg-first ">
+          <div class="mentor mentor1">
+            <div>
+              <div class=name>Алёна Евтушенко</div>
+              <div class=specialist>Маркетинг директор</div>
+            </div>
+          </div>
+          <div class="mentor mentor2" >
+            <div>
+              <div class=name>Алёна Евтушенко</div>
+              <div class=specialist>Маркетинг директор</div>
+            </div>
+          </div>
+          <div class="mentor mentor3" >
+            <div>
+              <div class=name>Алёна Евтушенко</div>
+              <div class=specialist>Маркетинг директор</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7  col-xs-12 right_block order-md-first">
+          <div style="margin-bottom: 40px;">Оставьте заявку, и мы подберём вам специалистов</div>
+          <div class="textline" id="001">Наши менторы помогут разобрать каждый шаг на пути</div>
+          <div class="textline" id="002">развития вашего дела. Изучите все моменты со</div>
+          <div class="textline" id="003">специалистами — оставляйте заявку, и  мы с вами свяжемся.</div>
+          <button class="def"  onclick="document.location='listing.html'">Посмотреть менторов</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=polezno_block>
+    <h2>Для кого Upminder?</h2>
+    <div class=container-fluid>
+      <div class="row nopadding">
+        <div class="col-md-6">
+          <div class=one>
+            <h3>Для клиентов и учеников</h3>
+            <p>Этот сервис будет полезен специалистам, которые хотят прокачать свои навыки или приобрести новые. Здесь вы можете найти ментора под ваш запрос по четырем сферам: маркетинг, IT, дизайн и юриспруденция</p>
+            <button class=def  onclick="document.location='listing.html'">Поиск специалистов</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class=two>
+            <h3>Для менторов и исполнителей</h3>
+            <p>Если вы готовы менторить, давать консультации или самостоятельно выполнять задачи по запросам учеников – вам к нам.<br>Кстати, консультации часто ведут к заказу услуг. Мы даем возможность получать и выполнять заказы через платформу</p>
+            <button class=def  onclick="document.location='mentors.html'">Хочу стать ментором</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ракета -->
+  <div class=rocket_block >
+    <h2>Как найти ментора или исполнителя?</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class=image><img src="images/index/ico01.png"> </div>
+        <div>Выберите интересующую вас сферу в поиске</div>
+      </div>
+      <div class="col-md-4">
+        <div class=image> <img src="images/index/ico02.png"> </div>
+        <div>Выберите специалиста из списка</div>
+      </div>
+      <div class="col-md-4">
+        <div class=image> <img src="images/index/ico03.png"> </div>
+        <div>Оставьте заявку, и мы с вами свяжемся</div>
+      </div>
+    </div>
+  </div>
+  <div class="white_block podrobnee_block">
+    <div class="row">
+      <div class="col-md-10">
+        <h2 style="margin-top: 10px;">Хотите узнать подробнее об Upminder?</h2>
+      </div>
+      <div class="col-md-2 right" >
+        <button class=def  onclick="document.location='about.html'">Погнали</button>
+      </div>
+    </div>
+  </div>
+  <div class=zadachi_block>
+    <h2>Какие задачи клиента решит сервис?</h2>
+    <div class=container-fluid>
+      <div class="row nopadding">
+        <div class="col-lg-4">
+          <div class=one>
+            <h3>Обсудить задачу или проблему</h3>
+            <p>Поговорить и получить рекомендации от специалиста можно в онлайн консультации. Наши менторы будут рады помочь, если задача никак не двигается с места, а просить совета у коллег как-то стеснительно</p>
+            <button class=def  onclick="document.location='listing.html'">Пообщаться</button>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class=two>
+            <h3>Развить свои навыки и получить новые</h3>
+            <p>Отлично, тогда вам на менторинг! Часто это хорошая замена образовательным курсам, где вы получите дополнительную мотивацию от вашего персонального ментора</p>
+            <button class=def  onclick="document.location='listing.html'">Обучаться</button>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class=three>
+            <h3>Передать задачу исполнителю</h3>
+            <p>В этом случае важно сначала посетить консультацию, чтобы сформулировать и обсудить запрос. Затем можно выбрать и получить нужную услугу</p>
+            <button class=def  onclick="document.location='listing.html'">Выбрать исполнителя</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=faq>
+    <h2>Вопросы и ответы</h2>
+    <a href=# class=more>Узнать больше <span></span></a>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Как получить консультацию? </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body"> Наши менторы помогут вам тщательно разобрать каждый шаг на пути развития вашего дела. Изучите все важные моменты с профильными специалистами: юридические стороны, бухгалтерский учет, маркетинг и другие направления. Оставляйте заявку, и мы свяжемся с вами в течение часа, чтобы подобрать нужного специалиста. </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Как выбрать ментора? </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body"> Наши менторы помогут вам тщательно разобрать каждый шаг на пути развития вашего дела. Изучите все важные моменты с профильными специалистами: юридические стороны, бухгалтерский учет, маркетинг и другие направления. Оставляйте заявку, и мы свяжемся с вами в течение часа, чтобы подобрать нужного специалиста. </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+      </div>
+  <div class=bottom_block>
+    <div class="row">
+      <div class="col-lg-6 col-md-6" id="targetCircle">
+        <div class=bottom_menu> 
+          <p class="pb-3" style="width: fit-content;"><a href=# class="d-inline-block">О сервисе</a></p>
+          <p class="pb-3" style="width: fit-content;"><a href=# class="d-inline-block">Стать ментором</a></p>
+          <p class="pb-3" style="width: fit-content;"><a href=# class="d-inline-block">Каталог менторов</a></p>
+        </div>
+        <div class="bottom_link d-none d-xs-none d-sm-block d-lg-none"> 
+          <p style="width: fit-content;"><a href=# class="d-inline-block">Политика конфиденциальности</a></p> 
+          <p  style="width: fit-content;"><a href=# class="d-inline-block"> Пользовательское соглашение</a></p> 
+          <p  style="width: fit-content;"><a href=# class="d-inline-block">Управление cookie</a></p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 right">
+        <div class=" justify-content-end "> <button href=# class=support>Написать в поддержку&nbsp;<span></span></button>
+         
+            
+            
+             <div class="bottom_link d-block d-xs-block d-sm-none d-lg-block"> 
+          <p class="pb-3" ><a href=#  class="d-inline-block">Политика конфиденциальности</a></p> 
+          <p class="pb-3" ><a href=# class="d-inline-block"> Пользовательское соглашение</a></p> 
+          <p class="pb-3" ><a href=# class="d-inline-block">Управление cookie</a></p>
+        </div>
+            
+            
+            
+             <div class=bottom_link>
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+			<p>© Upminder 2022</p>
+            <p> Дизайн сайта @lena_zakharian</p>
+				 
+				 </div>	 
+				 
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class=dark2  >
+    <div class=bottom_logo     >
+   
+      
+        <div class=greencycle><img id="circle" src="images/greencycle.svg"></div>
+      <img src="images/upminder.svg" class=logos>
+      
+      
+      
+      </div>
+    
+     </div>
+      
+      
+      
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let textline = document.querySelectorAll('.right_block .textline');
+
+    window.addEventListener('scroll', function () {        
+      textline.forEach(el => {
+          let elTop = el.offsetTop - document.documentElement.clientHeight / 2;      
+          let elBottom = el.offsetTop + el.offsetHeight - document.documentElement.clientHeight / 2;      
+          if (window.pageYOffset <= elTop || window.pageYOffset > elBottom) {
+            el.style.opacity = '';
+          } else {
+            el.style.opacity = '1';
+          }
+        });
+    });
+
+    if (document.documentElement.clientWidth >= 768) {
+        let circle = document.querySelector('#circle');
+        let links = document.querySelectorAll('#targetCircle p');
+        let btnSupport = document.querySelector('button.support');
+
+        links.forEach(el => {
+            el.addEventListener('mouseover', function(e) {
+                let x = Math.round(Math.random() * (500 - 20) + 20) * -1;
+                let p = (document.documentElement.clientWidth - 160) / 2 - circle.offsetWidth / 2;
+                p = Math.sign(x) === -1 ? -p : p;
+                  circle.style.transform = 'translateX(' + (Math.abs(x) > Math.abs(p) ? p : x) + 'px)';
+            });
+            el.addEventListener('mouseout', function() {
+                circle.style.transform = '';
+            });
+        });
+
+        btnSupport.addEventListener('mouseover', function(e) {
+            let x = Math.round(Math.random() * (500 - 20) + 20);
+            let p = (document.documentElement.clientWidth - 160) / 2 - circle.offsetWidth / 2;
+            p = Math.sign(x) === -1 ? -p : p;
+                  circle.style.transform = 'translateX(' + (Math.abs(x) > Math.abs(p) ? p : x) + 'px)';
+        });
+        btnSupport.addEventListener('mouseout', function() {
+                circle.style.transform = '';
+        });       
+      } 
+});
+</script>
+</body>
+</html>

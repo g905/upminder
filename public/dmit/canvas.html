@@ -1,0 +1,259 @@
+<!--from w  ww.  j ava 2 s  .  com-->
+<!DOCTYPE html>
+<html>
+<head>
+<script type='text/javascript'>//<![CDATA[ 
+window.onload=function(){
+    var canvas = document.getElementById('test')
+    var ctx = canvas.getContext('2d');
+	ctx.drawImage(document.getElementById('dm1'), 0, 0);
+	
+    var gradient=ctx.createRadialGradient(2,2,8,5,5,2);
+    gradient.addColorStop(0, 'rgba(0, 0, 0, 0.9)');
+    gradient.addColorStop(1, 'rgba(255, 255, 255, 0.3)');
+	
+	ctx.beginPath();
+	ctx.arc(4, 4, 3, 0, 2 * Math.PI, false);
+	ctx.fillStyle = gradient;
+	ctx.fill();
+	
+	ctx.beginPath();
+	ctx.arc(12, 4, 3, 0, 2 * Math.PI, false);
+	ctx.fillStyle = gradient;
+	ctx.fill();
+}//]]>  
+</script>
+<style>
+	canvas, image {
+		display: none;
+	}
+	.col {
+		width: 50px;
+		height: 50px;
+		background: #333;
+		position: relative;
+	}
+body {
+//background: gray;
+}
+.dia {
+	background: rgba(247, 241, 235, 1);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+.dia:before {
+	
+}
+.dia .dm {
+	width: 18px;
+	height: 18px;
+	background: rgba(255, 255, 255, 0.9);
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	position: absolute;
+	transform: rotate(45deg);
+	z-index: 5;
+}
+.dia .dm:before {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 18px;
+	left: -18px;
+	position: absolute;
+	z-index: 5;
+}
+.dia .dm:after {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.2);
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	position: absolute;
+	z-index: 5;
+}
+.dia .dt {
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.25);
+	position: absolute;
+	top: -9px;
+	left: 16px;
+	position: absolute;
+	transform: rotate(45deg);
+	z-index: 5;
+}
+.dia .dt:before {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.15);
+	position: absolute;
+	top: 18px;
+	left: -18px;
+	position: absolute;
+	z-index: 5;
+}
+.dia .dt:after {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.22);
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	position: absolute;
+	z-index: 5;
+}
+.dia .db {
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.07);
+	position: absolute;
+	bottom: -9px;
+	left: 16px;
+	position: absolute;
+	transform: rotate(45deg);
+	z-index: 5;
+}
+.dia .db:before {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.11);
+	position: absolute;
+	top: 18px;
+	left: -18px;
+	position: absolute;
+	z-index: 5;
+}
+.dia .db:after {
+	content: '';
+	width: 18px;
+	height: 18px;
+	background: rgba(0, 0, 0, 0.16);
+	position: absolute;
+	top: -18px;
+	right: -18px;
+	position: absolute;
+	z-index: 5;
+}
+.dvl {
+	width: 18px;
+	background: red;
+	height: 18px;
+	position: absolute;
+	top: 3.5px;
+	left: 3px;
+	z-index: 1;
+	transform: rotate(45deg);
+}
+.dvl:before {
+	content: '';
+	width: 18px;
+	background: red;
+	height: 18px;
+	position: absolute;
+	top: 17.5px;
+	left: 17.5px;
+	z-index: 1;
+}
+.dvr {
+	width: 18px;
+	background: red;
+	height: 18px;
+	position: absolute;
+	top: 3.5px;
+	right: 3px;
+	z-index: 1;
+	transform: rotate(45deg);
+}
+.dvr:before {
+	content: '';
+	width: 18px;
+	background: red;
+	height: 18px;
+	position: absolute;
+	top: 17.5px;
+	left: 17.5px;
+	z-index: 1;
+}
+.diamonds {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.canvas {
+	position: relative;
+	overflow: hidden;
+}
+.dr {
+	width: 100%;
+	height: 8px;
+	display: flex;
+	justify-content: space-between;
+}
+.dr .col {
+	width: 8px;
+	height: 100%;
+}
+
+</style>
+</head>
+<body>
+	<div class="canvas">
+		<div class="diamonds">
+
+		</div>
+		<img src="dm1_result.jpg" />
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		
+			var dw = 5.28;
+			var dh = 5.28;
+			
+			var rows = 1;
+			var dia_in_row = 118;
+			
+			var canvas_width = $('.canvas').find('img').width();
+			$('.canvas').css('width', canvas_width);
+			
+			
+			
+			for (var i = 0; i < rows; i++) {
+				
+				var dr = '<div class="dr dr_' + i + '" style="height: ' + dh + 'px;">';
+				
+				for (var a = 0; a < dia_in_row; a++) {
+				
+					dr += '<div class="col" style="width: ' + dw + 'px; height: ' + dh + 'px;"><div class="dia">';
+					
+					dr += '<div class="dt"></div><div class="dm"></div><div class="db"></div>';
+					dr += '<div class="dvl"></div><div class="dvr"></div>';
+					
+					dr += '</div></div>';
+				
+				}
+				
+				dr += '</div>';
+				
+				$('.diamonds').prepend(dr);
+				
+			}
+		
+		});
+	</script>
+</body>
+</html>
