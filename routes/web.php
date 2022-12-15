@@ -37,7 +37,7 @@ Route::prefix('control')->middleware('auth')->group(function () {
         Route::post('ajax', [App\Http\Controllers\CompanyController::class, 'ajax'])->name('admin_company_ajax');
         Route::get('list', [App\Http\Controllers\CompanyController::class, 'index'])->name('admin_company_list');
         Route::get('form/{id?}', [App\Http\Controllers\CompanyController::class, 'form'])->name('admin_company_form');
-        Route::post('form/{id?}', [App\Http\Controllers\CompanyController::class, 'store'])->name('admin_company_form');
+        Route::post('form/{id?}', [App\Http\Controllers\CompanyController::class, 'form'])->name('admin_company_form');
         Route::get('categories/list', [App\Http\Controllers\CompanyCategoryController::class, 'index'])->name('admin_company_cat_list');
         Route::get('categories/form/{id}', [App\Http\Controllers\CompanyCategoryController::class, 'form'])->name('admin_company_cat_form');
         Route::post('categories/form/{id}', [App\Http\Controllers\CompanyCategoryController::class, 'form'])->name('admin_company_cat_form');

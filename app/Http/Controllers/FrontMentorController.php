@@ -31,10 +31,15 @@ class FrontMentorController extends Controller {
 		if ($request->isMethod('post')) {
 			
 			$post_key = $request->input('key');
+			$post_key1 = $request->input('key1');
 			$post_cat = $request->input('cat');
 			$post_tags = $request->input('tags');
 			$post_astag = $request->input('astag');
 			$post_sort = $request->input('sort');
+			
+			if (empty($post_key) && !empty($post_key1)) {
+				$post_key = $post_key1;
+			}
 			
 			$cats = [];
 			$tags = [];
@@ -132,7 +137,7 @@ class FrontMentorController extends Controller {
 					}
 					
 					$result .= '<li>';
-					$result .= '<a href="javascript:void(0);" data-id="'.$ttc->id.'" data-tag="'.$t->id.'" class="selectCat asTag">';
+					$result .= '<a href="javascript:void(0);" data-id="'.$ttc->id.'" data-cat="'.$ttc->name.'" data-tag="'.$t->id.'" class="selectCat asTag">';
 					$result .= $t->name;
 					$result .= '</a>';
 					$result .= '</li>';
@@ -150,6 +155,7 @@ class FrontMentorController extends Controller {
 
 			/* Подгрузка тегов */
 			$result_tags = '';
+			$h2_text = '';
 			
 			if ($post_cat > 0) {
 				
@@ -158,10 +164,15 @@ class FrontMentorController extends Controller {
 					die(json_encode(['status' => 'error', 'msg' => 'Category does not exist!']));
 				}
 				
+				$h2_text = 'С чем нужно помочь?';
+				
 				$ids[] = $post_cat;
 				
 				if ($this_cat->parent_id > 0) {
+					
+					$h2_text = 'Выберите задачу из подкатегории '.$this_cat->name;
 					$ids[] = $this_cat->parent_id;
+					
 				}
 				
 				$list = CategoryTag::whereIn('category_id', $ids)->orderBy('name', 'asc')->get();
@@ -173,6 +184,11 @@ class FrontMentorController extends Controller {
 					if ($post_astag > 0) {
 						if ($tag->id == $post_astag) {
 							$checked = ' checked';
+						}
+					}
+					if ($post_tags) {
+						if (in_array($tag->id, $post_tags)) {
+							//$checked = ' checked';
 						}
 					}
 					
@@ -299,7 +315,14 @@ class FrontMentorController extends Controller {
 						elseif ($post_sort == 'price_desc' && $this_service) {
 							$rmk = $this_service->price;
 						}
-					
+						
+						if ($this_service) {
+							if ($this_service->discount) {
+								$diff = $rmk * $this_service->discount / 100;
+								$rmk = $this_service->price - $diff;
+							}
+						}
+						
 					}
 					
 					$result_mentors[$rmk][] = '<div class="cart_block">';
@@ -356,7 +379,16 @@ class FrontMentorController extends Controller {
 					$result_mentors[$rmk][] = '<div class="desc d-none d-md-block">'.$m->description.'</div>';
 					$result_mentors[$rmk][] = '<div class="clearfix"></div>';
 					$result_mentors[$rmk][] = '<div class="tag_block_mentor">';
-					$result_mentors[$rmk][] = '<a href="javascript:void(0);" class="tag spectag">Ментор сделает за вас&nbsp;<img src="/verstka/images/force.svg"></a>';
+					
+					$dop = false;
+					$dop_check = MentorSingleService::where(['mentor_id' => $m->id, 'currency_id' => 2])->count();
+					if ($dop_check > 0) {
+						$dop = true;
+					}
+					
+					if ($dop) {
+						$result_mentors[$rmk][] = '<a href="javascript:void(0);" class="tag spectag">Ментор сделает за вас&nbsp;<img src="/verstka/images/force.svg"></a>';
+					}
 					
 					if ($m->vip_status) {
 						$result_mentors[$rmk][] = '<a href=# class="tag spectag">VIP-ментор&nbsp;<img src="/verstka/images/smile.svg"></a>'; 
@@ -388,7 +420,7 @@ class FrontMentorController extends Controller {
 							
 							$diff = $this_service->price * $this_service->discount / 100;
 							$old_price = round($this_service->price - $diff);
-							$result_mentors[$rmk][] = '<span class="active_price">'.$old_price.' <span class="rub">$</span></span><span class="old_price">'.$this_service->price.' <span class="rub">$</span></span><span class="active_price"></span>';
+							$result_mentors[$rmk][] = '<span class="active_price">'.$old_price.' <span class="rub">$</span></span><span class="old_price">'.$this_service->price.'<span class="rub">$</span></span><span class="active_price"></span>';
 						
 						}
 						else {
@@ -397,7 +429,14 @@ class FrontMentorController extends Controller {
 
 						$ts = MentorService::find($this_service->service_id);
 						if ($ts) {
-							$result_mentors[$rmk][] = '<div class="sale">'.$ts->name.'</div>';
+							
+							$result_mentors[$rmk][] = '<div class="sale">'.$ts->name;
+							if ($this_service->discount) {
+								$result_mentors[$rmk][] = ' (-'.$this_service->discount.'%)';
+							}
+							
+							$result_mentors[$rmk][] = '</div>';
+							
 						}
 						
 					}
@@ -434,7 +473,7 @@ class FrontMentorController extends Controller {
 				
 			//}
 			
-			die(json_encode(['status' => 'ok', 'list' => $result, 'tags' => $result_tags, 'mentors' => $result_mentors, 'count' => $count]));
+			die(json_encode(['status' => 'ok', 'h2' => $h2_text, 'list' => $result, 'tags' => $result_tags, 'mentors' => $result_mentors, 'count' => $count]));
 			die(json_encode(['status' => 'ok', 'list' => $result]));
 		
 		}

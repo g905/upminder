@@ -13,6 +13,8 @@ use App\Models\CompanySingleCategory;
 use App\Models\Country;
 use App\Models\City;
 
+use Illuminate\Support\Facades\Storage;
+
 class CompanyController extends Controller
 {
 
@@ -168,7 +170,7 @@ class CompanyController extends Controller
             $rec = Company::find($id);
             $page_title = 'Редактировать компанию';
             if (!$rec) {
-                return redirect()->back()->with('error', 'Компания не найден!');
+                return redirect()->back()->with('error', 'Компания не найдена!');
             }
 
             $cat_list = [];
@@ -180,6 +182,59 @@ class CompanyController extends Controller
             }
 
         }
+		
+		if ($request->isMethod('post')) {
+			
+            /* Правила валидации */
+            $rules = [
+   
+				'name' => 'required',
+                'law_name' => 'required',
+            
+            ];
+            
+            $valid = Validator::make($request->all(), $rules);
+            
+            /* Показываем сообщения. Не прошла валидация */
+            if ($valid->fails()) {
+                return redirect()
+                    ->back()
+                    ->withErrors($valid)
+                    ->withInput();
+            }
+			
+			$d = $request->all();
+			unset($d['_token']);
+			
+			if ($request->file('logo')) {
+				
+				$ext = $request->logo->extension();
+				$fileName = rand(100000, 999999).'.'.$ext;
+				$logo = Storage::disk('public')
+							->putFileAs('avatar', $request->file('logo'), $fileName);
+				$logo = $fileName;
+			
+			}
+
+			if (!isset($logo)) {
+				
+				if ($id) {
+					$logo = $rec->logo;
+				}
+				else {
+					$logo = '';
+				}
+				
+			}
+			
+			$d['logo'] = $logo;
+						
+			$rec->fill($d);
+			$rec->save();
+			
+			return redirect()->back()->with('success', 'Компания сохранена!');
+			
+		}
 
         return view('admin/company_form', compact('id', 'rec', 'page_title', 'show_tab', 'list_categories', 'list_countries', 'list_cities', 'cat_list'));
 
@@ -187,6 +242,17 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
+		
+		$logo = '';
+		if ($request->file('logo')) {
+			
+			$ext = $request->logo->extension();
+			$fileName = rand(100000, 999999).'.'.$ext;
+			$logo = Storage::disk('public')
+						->putFileAs('avatar', $request->file('logo'), $fileName);
+			$logo = $fileName;
+		
+		}
 
         /* Сохраняем информацию и редирект */
         $data = [
@@ -201,6 +267,7 @@ class CompanyController extends Controller
             'phone' => $request->input('phone'),
             'website' => $request->input('website'),
             'description' => $request->input('description'),
+            'logo' => $logo,
 
         ];
 
@@ -210,19 +277,21 @@ class CompanyController extends Controller
 
 
         /* Категории компании */
-        foreach ($request->input('categories') as $cat_a => $cat_id) {
+		if ($request->input('categories')) {
+			foreach ($request->input('categories') as $cat_a => $cat_id) {
 
-            /* Удаляем все предыдущие привязки к категориям */
-            if ($cat_a == 0) {
-                CompanySingleCategory::where(['company_id' => $newCompany->id])->delete();
-            }
+				/* Удаляем все предыдущие привязки к категориям */
+				if ($cat_a == 0) {
+					CompanySingleCategory::where(['company_id' => $newCompany->id])->delete();
+				}
 
-            /* Привязываем к новым категорям (выбранным) */
-            $mentor_cat = new CompanySingleCategory;
-            $mentor_cat->fill(['company_id' => $newCompany->id, 'category_id' => $cat_id]);
-            $mentor_cat->save();
+				/* Привязываем к новым категорям (выбранным) */
+				$mentor_cat = new CompanySingleCategory;
+				$mentor_cat->fill(['company_id' => $newCompany->id, 'category_id' => $cat_id]);
+				$mentor_cat->save();
 
-        }
+			}
+		}
 
         if ($request->input('redirect') == 'true') {
             return redirect(route('admin_company_list'))->with('success', 'Компания сохранена!');

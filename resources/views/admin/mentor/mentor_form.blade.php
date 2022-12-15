@@ -315,7 +315,7 @@
                     <div class="col-md-3">
                       <div class="form-group">
                         <label>Компания: * <a href="{{ route('admin_company_form', 0) }}">Добавить</a></label>
-						<select name="experience_company[]" class="s2 form-control">
+						<select name="experience_company[]" class="select2 form-control">
 							<option value="">Выберите компанию</option>
 							@if ($list_companies)
 								@foreach ($list_companies as $c)

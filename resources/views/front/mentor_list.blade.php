@@ -7,7 +7,7 @@
 					<form id="mentorSearch">
 						<input type="hidden" name="sort" value="id" />
 						<input type="hidden" name="cat" value="" />
-						<input type="hidden" name="astag" value="" />
+						<input type="hidden" name="astag" value="" /> 
 						<div class="d-none d-sm-block">
 							<div class="row" >
 								<div class="col-xs-6 col-md-8 col-lg-10 keysList" style="border:0px solid red">
@@ -20,12 +20,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="d-block d-sm-none"  style=" position: relative">
-							<input class="def search" placeholder="Какой нужен специалист?">
-							<button class="def search" style="position: absolute; z-index: 2; margin: 0px; right:5px; top:6px; bottom:6px; padding: 0px; width: 41px; height: 41px; border-radius:10px "><img src="images/search.svg"></button>
+						<div class="d-block d-sm-none keysList"  style=" position: relative">
+							<input id="searchKey1" name="key1" class="def search" placeholder="Какой нужен специалист?">
+							<button class="def search" style="position: absolute; z-index: 2; margin: 0px; right:5px; top:6px; bottom:6px; padding: 0px; width: 41px; height: 41px; border-radius:10px "><img src="/verstka/images/search.svg"></button>
 							<div class="right"><a href="{{ route('front.mentors') }}" class="kill">Сбросить <img src="/verstka/images/close_white.svg"></a></div>
 						</div>
-						<h2>С чем нужно помочь?</h2>
+						<h2 class="hc">С чем нужно помочь?</h2>
 						<div class="tag_block" style="display: none;"></div>
 						<div class="checkbox_block">
 							<span><input class="form-check-input updateForm" type="checkbox" value="1" name="for_you" id="isForYou">

@@ -38,7 +38,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12 grid-margin">
-			<form action="{{ route('admin_company_form', $id) }}" method="POST" class="form_group_margin company_form">
+			<form action="{{ route('admin_company_form', $id) }}" method="POST" enctype="multipart/form-data" class="form_group_margin company_form">
 				<input id="ajax_url" type="hidden" value="{{ route('admin_company_ajax') }}" />
 				<input id="show_tab" type="hidden" value="{{ $show_tab }}" />
 				@csrf
@@ -94,6 +94,13 @@
 							<label>ИНН: *</label>
 							<input type="text" name="inn" value="{{ old('inn', $rec->inn) }}" class="form-control-sm form-control" />
 						</div>
+						<div class="form-group">
+							<label>Логотип: </label>
+							<input type="file" name="logo" class="form-control" />
+						</div>
+						@if ($rec->logo)
+							<div style="background: #f1f1f1; width: 200px; height: 150px; background-size: cover; background-image: url({{ route('get.avatar', $rec->logo) }});"></div>
+						@endif
 					</div>
 					<div class="card-body dynamic contacts">
 						<div class="form-group">
@@ -102,7 +109,7 @@
 						</div>					
 						<div class="form-group">
 							<label>E-mail:</label>
-							<input type="email" name="email" value="{{ old('email', $rec->email) }}" class="form-control" />
+							<input type="text" name="email" value="{{ old('email', $rec->email) }}" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label>Телефон:</label>

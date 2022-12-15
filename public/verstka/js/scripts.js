@@ -4,8 +4,7 @@ jQuery(function($) {
 		var mentorSearchForm = $('#mentorSearch');
 		var selectedCat;
 		var loadedTags = false;
-		var isTyping = true;
-		
+
 		$(document).on('change', '.sortList', function() {
 			
 			$('input[name=sort]').val($(this).val());
@@ -18,8 +17,7 @@ jQuery(function($) {
 			
 			selectedTag = 0;
 			loadedTags = false;
-			isTyping = true;
-			
+
 			$('input[name=short]').val('id');
 			$('input[name=cat]').val('');
 			$('input[name=astag]').val('');
@@ -53,18 +51,98 @@ jQuery(function($) {
 			
 		});
 		
-		$(document).on('keyup', '#searchKey', function() {
+		$(document).on('click', '#searchKey', function() {
+			
+			$(this).val('');
+			return;
+			
+		});
+		
+		var use = $('#searchKey');
+		
+		$(document).off('keyup', '#searchKey').on('keyup', '#searchKey1', function() {
+			
+			var use = $('#searchKey1');
+
+			selectedCat = null;
+			loadedTags = false;
+			$('input[name=astag]').val('');
+			
+			if (use.val().length >= 3) {
+				
+				loadedTags = false;
+				$('.tag_block').hide();
+
+				$.ajax({
+					
+					url: '/mentors',
+					type: 'post',
+					data: mentorSearchForm.serialize(),
+					dataType: 'json',
+					beforeSend: function() {
+						
+						$('#searchKey').removeClass('br');
+						$('.list_results').remove();
+						
+					},
+					success: function(response) {
+	
+						if (response.status == 'ok') {
+
+							$('#searchKey').addClass('br');
+							$('.keysList').prepend(response.list);
+							$('.keysList').addClass('opened');
+
+						}
+						
+					}
+					
+				});
+				
+			}
+			
+		});
+		
+		$(document).off('keyup', '#searchKey').on('keyup', '#searchKey', function() {
 			
 			selectedCat = null;
 			loadedTags = false;
 			$('input[name=astag]').val('');
 			
-			if ($(this).val().length >= 3) {
+			if (use.val().length >= 3) {
 				
-				isTyping = false;
-				//mentorSearchForm.change();
-				return;
+				loadedTags = false;
+				$('.tag_block').hide();
+
+				$.ajax({
+					
+					url: '/mentors',
+					type: 'post',
+					data: mentorSearchForm.serialize(),
+					dataType: 'json',
+					beforeSend: function() {
+						
+						$('#searchKey').removeClass('br');
+						$('.list_results').remove();
+						
+					},
+					success: function(response) {
+	
+						if (response.status == 'ok') {
+
+							$('#searchKey').addClass('br');
+							$('.keysList').prepend(response.list);
+							$('.keysList').addClass('opened');
+
+						}
+						
+					}
+					
+				});
 				
+			}
+			else {
+				$('.list_results').remove();
 			}
 			
 		});
@@ -79,22 +157,26 @@ jQuery(function($) {
 				dataType: 'json',
 				beforeSend: function() {
 					
+					$('.hc').text('С чем нужно помочь?');
 					$('#searchKey').removeClass('br');
-					$('.list_results').remove();
-					//$('.tag_block').hide();
 					
 				},
 				success: function(response) {
 					
 					if (response.status == 'ok') {
 						
-						if (!selectedCat) {
+						if (response.h2.length > 1) {
+							$('.hc').text(response.h2);
+						}
+						
+						if (!$('.keysList').hasClass('opened')) {
 							
 							$('#searchKey').addClass('br');
 							$('.keysList').prepend(response.list);
+							$('.keysList').addClass('opened');
 
 						}
-						
+
 						if (response.tags && !loadedTags) {
 							
 							$('.tag_block').html(response.tags);
@@ -123,11 +205,34 @@ jQuery(function($) {
 			
 		});
 		
-		$(document).on('click', '.selectCat', function() {
+		$(document).off('click', '.selectCat').on('click', '.selectCat', function() {
 						
+			console.log(' click');
 			selectedCat = parseInt($(this).data('id'));
 			mentorSearchForm.find('input[name=cat]').val(selectedCat);
-			$('#searchKey').val($(this).text());
+			
+			if ($(this).hasClass('asTag')) {
+				
+				if ($(window).width() > 1000) {
+					$('#searchKey').val($(this).data('cat'));
+				}
+				else {
+					$('#searchKey1').val($(this).data('cat'));
+				}
+				
+			}
+			
+			else {
+				if ($(window).width() > 1000) {
+					$('#searchKey').val($(this).text());
+				}
+				else {
+					$('#searchKey1').val($(this).text());
+				}
+				
+			}
+			
+			$('.list_results').remove();
 			
 			if ($(this).hasClass('asTag')) {
 				
@@ -142,6 +247,7 @@ jQuery(function($) {
 			
 		});
 		
+		/*
 		$(document).on('click', '.selectTag label', function() {
 			
 			/*
@@ -158,11 +264,9 @@ jQuery(function($) {
 				$(this).append('<a href="javascript:void(0);" class="removeTag"></a>');
 				
 			}
-			*/
-			
-			return;
-			
+	
 		});
+		*/
 		
 		$(document).on('click', '.removeTag', function() {
 			
