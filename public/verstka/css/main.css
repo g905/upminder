@@ -786,7 +786,10 @@ a.filter_collapse {
 }
 .cart_white_block .cart_faq_block h2 {
   margin-top: 140px;
-  margin-bottom: 40px;
+}
+.cart_white_block .cart_faq_block .accordion-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 @media screen and (max-width: 1000px) {
   .cart_white_block {
@@ -806,7 +809,10 @@ a.filter_collapse {
   }
   .cart_white_block .cart_faq_block h2 {
     margin-top: 80px;
-    margin-bottom: 40px;
+  }
+  .cart_white_block .cart_faq_block .accordion-header {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -823,6 +829,13 @@ a.filter_collapse {
   }
   .cart_white_block .why {
     margin-top: 72px;
+  }
+  .cart_white_block .cart_faq_block h2 {
+    margin-top: 72px;
+  }
+  .cart_white_block .cart_faq_block .accordion-header {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 .nav-link:hover {
@@ -963,6 +976,7 @@ a.kill img {
   box-shadow: none !important;
   font-size: 1.5rem;
   font-family: "neue";
+  padding: 40px;
   padding-bottom: 0px;
 }
 .guarantee_block {
@@ -992,6 +1006,10 @@ a.kill img {
   .guarantee_block h2 {
     font-size: 2rem;
   }
+  .accordion-button {
+    padding: 24px;
+    padding-right: 30px;
+  }
 }
 .dark_block > div > img {
   margin-right: 10px;
@@ -1002,47 +1020,24 @@ a.kill img {
   border: 0px solid red;
   font-size: 1rem;
   margin-bottom: 10px;
-  padding: 40px;
-  padding-right: 53px;
-}
-.accordion-header {
-  margin-bottom: 20px;
 }
 .accordion-header .collapsed {
-  padding-right: 0px;
+  padding: 40px;
 }
 .accordion-item h2 {
   background-color: transparent;
   border-radius: 16px;
 }
-.accordion-button {
-  padding-top: 0px;
-  padding-left: 0px;
-}
 .accordion-button:not(.collapsed) {
   background-color: transparent !important;
   color: #37e45e !important;
-  padding: 0px;
+  padding: 40px;
   padding-bottom: 16px;
-  padding-left: 0px;
 }
 .accordion-body {
-  padding: 0px;
+  padding: 40px;
   padding-top: 0px;
   padding-right: 70px;
-}
-@media screen and (max-width: 1200px) {
-  .accordion-item {
-    padding: 32px;
-  }
-  .accordion-header {
-    padding-top: 0px;
-  }
-}
-@media screen and (max-width: 600px) {
-  .accordion-item {
-    padding: 24px;
-  }
 }
 .cart_white_block .nav-link {
   font-family: "neue";
@@ -1057,6 +1052,17 @@ a.kill img {
   padding-top: 30px;
   padding-bottom: 30px;
   padding-left: 0px;
+}
+@media screen and (max-width: 1000px) {
+  .accordion-header .collapsed {
+    padding: 32px;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+    color: #37e45e !important;
+    padding: 32px;
+    padding-bottom: 16px;
+  }
 }
 .paginator {
   margin-top: 30px;
@@ -1473,10 +1479,7 @@ a.backtolisting:hover {
 }
 @media screen and (max-width: 1200px) {
   .dark_block_index h2 {
-    margin-left: 40px;
-  }
-  .dark_block_index .accordion-header {
-    margin-left: 0px;
+    margin-left: 40px !important;
   }
   .polezno_block {
     margin-top: 80px;
@@ -2390,13 +2393,14 @@ a.backtolisting:hover {
   line-height: normal;
   margin-top: 0px;
 }
-.about .gc_block {
-  position: relative;
-  width: 100%;
-  margin-top: -30px;
-}
 .about .greencycle_1 {
+  width: 524px;
+  height: 524px;
+  border: 0px solid red;
+  background-color: #37e45e;
   display: block;
+  border-radius: 500px;
+  position: absolute;
   -webkit-transition: -webkit-transform 0.5s ease-out;
   transition: -webkit-transform 0.5s ease-out;
   -o-transition: transform 0.5s ease-out;
@@ -2405,24 +2409,10 @@ a.backtolisting:hover {
   transition: transform 0.5s, -webkit-transform 0.5s ease-out;
 }
 .about .foto {
-  position: absolute !important;
-  top: 70px;
+  position: relative;
+  top: 100px;
   left: 0px;
-  width: 100% ;
-}
-@media screen and (max-width: 1200px) {
-  .about .gc_block {
-    margin-top: 30px;
-  }
-  .about .foto {
-    position: absolute !important;
-    top: 50px;
-  }
-}
-@media screen and (max-width: 600px) {
-  .about .gc_block {
-    margin-top: 32px;
-  }
+  width: 100%;
 }
 .about .right80 {
   padding-right: 80px;
@@ -2433,13 +2423,6 @@ a.backtolisting:hover {
 .about .polezno_block h2 {
   font-size: 3rem;
   padding-left: 80px;
-  margin-left: 0px;
-}
-.about .polezno_block .one,
-.about .polezno_block .two {
-  min-height: 400px;
-}
-.about .polezno_block .two {
   margin-left: 0px;
 }
 .about .about_block2 {
@@ -2470,6 +2453,7 @@ a.backtolisting:hover {
 }
 .about .about_block2 h4 {
   font-size: 1.2rem;
+  font-weight: bold;
 }
 .about .about_block2 p {
   font-size: 1rem;
@@ -2557,15 +2541,33 @@ a.backtolisting:hover {
   color: #ffffff;
   /* Цвет текста */
 }
+.about .dark_block .greencycle_1 {
+  width: 524px;
+  height: 524px;
+  border: 0px solid red;
+  background-color: #37e45e;
+  display: block;
+  border-radius: 500px;
+  margin-top: -70px;
+}
+.about .dark_block .foto {
+  position: relative;
+  top: 50px;
+  left: 0px;
+  width: 600px;
+  margin-top: -70px;
+}
 .about .cart_faq_block {
   margin-left: 80px;
   margin-right: 80px;
   margin-top: 140px;
   margin-bottom: 140px;
 }
+.about .cart_faq_block .accordion-header {
+  margin-top: 8px;
+}
 .about .cart_faq_block h2 {
   font-size: 3rem;
-  margin-bottom: 40px;
 }
 @media screen and (max-width: 1300px) {
   .about h2 {
@@ -2575,6 +2577,25 @@ a.backtolisting:hover {
     margin-top: 0px;
   }
   .about .zadachi_block {
+    margin-top: 0px;
+  }
+  .about .dark_block .greencycle_1 {
+    width: 400px;
+    height: 400px;
+    border: 0px solid red;
+    background-color: #37e45e;
+    display: block;
+    border-radius: 500px;
+    position: absolute;
+    margin-top: 0px;
+  }
+  .about .dark_block .foto {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    width: 400px;
+    height: auto;
+    margin-bottom: 100px;
     margin-top: 0px;
   }
   .about .polezno_block h3 {
@@ -2605,6 +2626,7 @@ a.backtolisting:hover {
   .about .polezno_block .two {
     background-image: url(../images/index/foto2_m.jpg);
     background-size: cover;
+    margin-left: 0px;
   }
   .about .polezno_block .one:hover {
     background-image: url(../images/index/foto1_m.jpg);
@@ -2620,11 +2642,44 @@ a.backtolisting:hover {
   .about .right80 {
     padding-right: 0px;
   }
+  .about .greencycle_1 {
+    width: 300px;
+    height: 300px;
+    border: 0px solid red;
+    background-color: #37e45e;
+    display: block;
+    border-radius: 500px;
+  }
+  .about .foto {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    width: 300px;
+    height: auto;
+    margin-bottom: 100px;
+  }
   .about .about_block1 {
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 72px;
     min-height: 400px;
+  }
+  .about .about_block1 .greencycle_1 {
+    width: 300px;
+    height: 300px;
+    border: 0px solid red;
+    background-color: #37e45e;
+    display: block;
+    border-radius: 500px;
+    position: absolute;
+  }
+  .about .about_block1 .foto {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    width: 300px;
+    height: auto;
+    margin-bottom: 100px;
   }
   .about .about_block2 {
     padding: 16px;
@@ -2639,9 +2694,6 @@ a.backtolisting:hover {
     font-size: 2rem;
     padding-left: 16px;
     margin-left: 0px;
-  }
-  .about .polezno_block h2 .two {
-    margin-left: 1px;
   }
   .about .zadachi_block h2 {
     margin-left: 16px;
@@ -2729,6 +2781,23 @@ a.backtolisting:hover {
     color: #ffffff;
     /* Цвет текста */
   }
+  .about .dark_block .greencycle_1 {
+    width: 300px;
+    height: 300px;
+    border: 0px solid red;
+    background-color: #37e45e;
+    display: block;
+    border-radius: 500px;
+    position: absolute;
+  }
+  .about .dark_block .foto {
+    position: relative;
+    top: 50px;
+    left: 0px;
+    width: 300px;
+    height: auto;
+    margin-bottom: 100px;
+  }
   .about .cart_faq_block {
     margin-left: 20px;
     margin-right: 20px;
@@ -2739,10 +2808,56 @@ a.backtolisting:hover {
     font-size: 2rem;
     margin-bottom: 32px;
   }
+  .about .cart_faq_block .accordion-button {
+    padding: 24px;
+    padding-top: 32px;
+  }
 }
 @media screen and (max-width: 600px) {
   .about h2 {
     margin-top: 72px;
+  }
+  .about .about_block1 .greencycle_1 {
+    width: 355px;
+    height: 355px;
+    border: 0px solid red;
+    background-color: #37e45e;
+    display: block;
+    border-radius: 500px;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .about .about_block1 .foto {
+    position: relative;
+    top: 50px;
+    width: 355px;
+    height: auto;
+    margin-bottom: 100px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .about .dark_block .greencycle_1 {
+    width: 355px;
+    height: 355px;
+    border: 0px solid red;
+    background-color: #37e45e;
+    display: block;
+    border-radius: 500px;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .about .dark_block .foto {
+    position: relative;
+    top: 50px;
+    width: 355px;
+    height: auto;
+    margin-bottom: 100px;
+    left: 50%;
+    transform: translate(-50%);
   }
 }
 @media screen and (max-width: 600px) {
@@ -2776,6 +2891,10 @@ a.backtolisting:hover {
   }
   .about .dark_block .def2 {
     width: 100%;
+  }
+  .about .cart_faq_block {
+    margin-bottom: 72px;
+    margin-top: 72px;
   }
   .about .dark_block {
     padding-right: 20px;
@@ -3509,7 +3628,7 @@ a.backtolisting:hover {
     margin-top: 0px;
   }
   .mentors .mentor_block5 .ready {
-    width: 65%;
+    width: 50%;
   }
   .mentors .mentor_block5 .before {
     margin-top: 40px;
@@ -3517,7 +3636,7 @@ a.backtolisting:hover {
   .mentors .mentor_block5 .before h3 {
     float: left;
     margin-top: 10px;
-    margin-right: 30px;
+    margin-right: 40px;
   }
   .mentors .cart_faq_block {
     margin: 16px;
@@ -3622,9 +3741,6 @@ a.backtolisting:hover {
   .index_block h2 {
     margin-top: 72px;
   }
-  .index_block .faq h2 {
-    margin-top: 0px;
-  }
   .index_block .rocket_block,
   .index_block .polezno_block {
     margin-top: 0px;
@@ -3635,6 +3751,15 @@ a.backtolisting:hover {
   }
   .index_block h2 {
     margin-left: 0px !important;
+  }
+  .index_block .faq .more {
+    margin-bottom: 0px;
+  }
+  .index_block .accordion-body {
+    padding-left: 20px;
+  }
+  .index_block .accordion-header {
+    margin-top: 8px;
   }
 }
 .search_block h2 {
