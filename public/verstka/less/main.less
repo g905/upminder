@@ -452,13 +452,43 @@ button.form:hover  { transition:0.5s;}
   );
   shape-margin: 7%;
 }
-.bottom_block {background-color: @dark; padding-left:100px; padding-right:100px; padding-top:150px; }
+.bottom_block {background-color: @dark; padding-top:145px;
+position:relative; width:100%; min-height:740px;
 
+
+ }
+
+
+.bottom_link_block {padding-left: 80px; padding-right: 80px;
+
+position:absolute; z-index:1000; width:100%;
+
+
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .bottom_block { padding-top: 90px; min-height:640px;}
+
+  .bottom_link_block {padding-left: 40px; padding-right: 40px;  }
+
+
+
+}
 
 
 
 @media screen and (max-width: 600px) {
-.bottom_block {background-color: @dark; padding-left:40px; padding-right:40px; padding-top:40px; padding-bottom:0px;text-align: center;
+
+  .bottom_link_block {padding-left: 5px; padding-right: 5px;  }
+
+
+.bottom_block {text-align: center;height:740px;padding-top: 32px;
+
+
+
+
 
 
 	.right {text-align: center}
@@ -468,10 +498,9 @@ button.form:hover  { transition:0.5s;}
 
 
 
-@media screen and (max-width: 1000px) {
-	.bottom_block {padding:30px; padding-bottom: 0px; padding-top: 90px;}
 
-}
+
+
 .bottom_menu a {color:@white;font-size: 3rem; display: block; text-decoration: none;
 }
 .bottom_menu a:hover {color:@green; transition: 0.5s; display: block; text-decoration: none;
@@ -488,7 +517,7 @@ button.form:hover  { transition:0.5s;}
 
 
 
-.support {border:2px solid @white;background-color: @dark; .radius25; color:@white;padding:28px; padding-left: 34px; padding-right: 34px; font-size: 30px; text-decoration: none; display: inline-block; text-align: left;  }
+.support {width: 100%; text-align: center; border:2px solid @white;background-color: @dark; .radius25; color:@white;padding:28px; padding-left: 34px; padding-right: 34px; font-size: 30px; text-decoration: none; display: inline-block;  }
 
 .support span { background: url(../images/telegram_white.svg); background-repeat: no-repeat; width: 29px; height: 24px; display: inline-block; margin-left: 16px; margin-bottom: -2px; }
 .support:hover span { background: url(../images/telegram_green.svg); background-repeat: no-repeat; transition: 0.5s }
@@ -505,14 +534,14 @@ button.form:hover  { transition:0.5s;}
 .bottom_link a:hover {color:white;}
 
 @media screen and (max-width: 1200px) {
-.support {font-size: 1.5rem; margin-top: 20px; }
+.support {font-size: 1.4rem; margin-top: 20px; }
 	.support span  { margin-bottom: -5px;}
 
 }
 
 
 @media screen and (max-width: 600px) {
-.support {font-size: 1.3rem; margin-top: 20px;
+.support {font-size: 1.6rem; margin-top: 36px;
 
 	}
 
@@ -930,6 +959,7 @@ a.kill {color:@white; text-decoration: none;  padding-top: 13px; display: block;
 
     .accordion-button:not(.collapsed) { }
 
+    .accordion-body { padding-right: 16px; }
 
 }
 
@@ -1706,7 +1736,7 @@ color:@dark; padding:6px;  padding-right:10px; padding-left:10px; text-decoratio
 	#002 {opacity: 1}
 
 
- .def {padding-left:30px; padding-right:30px; margin-top: 60px; display: block; margin-bottom: 50px;}
+ .def {padding-left:30px; padding-right:30px; margin-top: 60px; display: block; margin-bottom: 0px;}
 
 
 	.mentor { background-size: cover; border-radius:16px;
@@ -1769,9 +1799,9 @@ color:@dark; padding:6px;  padding-right:10px; padding-left:10px; text-decoratio
 @media (max-width: 1000px) {
 
 
-	.mentor1 { margin-left: 267px; margin-top: -100px; width: 219px; height: 267px}
-		.mentor2 { margin-left: 602px; margin-top: -250px; }
-		.mentor3 { margin-left: 50px; margin-top: -250px; }
+	.mentor1 { margin-left: 267px; margin-top: -80px; width: 219px; height: 267px}
+		.mentor2 { margin-left: 522px; margin-top: -230px; }
+		.mentor3 { margin-left: 50px; margin-top: -230px; }
 
 
 	.text_block {
@@ -1798,7 +1828,7 @@ color:@dark; padding:6px;  padding-right:10px; padding-left:10px; text-decoratio
 
 .textline {font-size: 2rem; line-height: 2rem}
 
- .def {padding-left:30px; padding-right:30px; margin-top: 30px; display: block; margin-bottom: 50px; width: 100%}
+ .def {padding-left:30px; padding-right:30px; margin-top: 30px; display: block;  width: 100%}
 
 	}
 
@@ -2035,7 +2065,7 @@ h2 {font-size: 3rem; font-family: "neue"; margin-bottom: 30px; color:@white; }
 .dark_block_index {
 .faq {
 
-	padding:80px; padding-top: 140px; color:@white;
+	padding:80px; padding-bottom:0px; padding-top: 140px; color:@white;
 
 
 	.more {float: right; color:white; text-decoration: none; margin-top:-60px; border:0px solid red; position: relative}
@@ -2063,8 +2093,6 @@ h2 {font-size: 3rem; font-family: "neue"; margin-bottom: 30px; color:@white; }
 	{background-image: url(../images/arrow-down-white.svg) !important;
 	height: 1rem;}
 }
-.accordion-body {padding-right: 80px;}
-
 
 
 
@@ -2077,7 +2105,7 @@ h2 {font-size: 3rem; font-family: "neue"; margin-bottom: 30px; color:@white; }
 
 
 
-	.faq { padding:40px;	}
+	.faq { padding:40px; padding-bottom: 0px	}
 
 
 }
@@ -3194,34 +3222,36 @@ box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
 .dark2 {background-color: @dark; border:1px solid @dark; margin-bottom:-1px;}
 
 
-.bottom_logo {position: relative; border:0px solid red; margin-top: 450px;}
+.bottom_logo {padding-left: 80px; padding-right:80px;}
 
-	.logos {	width:100%; bottom:0; position: absolute; bottom: 0px; padding-left: 80px; padding-right: 80px; }
+	.logos {	width:100%; bottom:0; left: 0px;position: absolute;border:0px solid red;}
+
+  .greencycle {position: absolute; bottom: 0px; text-align: center; width: 100%;
+
+
+  	img {width: 60%}
+
+  }
+
 
 
 	@media screen and (max-width: 1200px) {
 
-
+.bottom_logo {padding-left: 40px; padding-right:40px;}
 		.bottom_logo { margin-top: 250px;}
 
 		.bottom_menu a {font-size: 2rem}
 
 
-		.logos {	width:100%; bottom:0; position: absolute; bottom: 0px; padding-left: 40px; padding-right: 40px; }
+
 }
 
 	@media screen and (max-width: 600px) {
 
-		.logos {	width:100%; bottom:0; position: absolute; bottom: 0px; padding-left: 16px; padding-right: 16px; }
-}
-
-
-.greencycle {position: absolute; bottom: 0px; text-align: center; width: 100%;
-
-
-	img {width: 60%}
+    .bottom_logo {padding-left: 16px; padding-right:16px;}
 
 }
+
 
 
 
@@ -3229,13 +3259,13 @@ box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
 	@media screen and (max-width: 600px) {
 
 
-	.bottom_logo {position: relative; border:0px solid red; margin-top: 150px;}
+	.bottom_logo {}
 
 
 
 	.greencycle
 		{
-	img {width: 60%; left: 0px}
+	img {width: 90%; left: 0px}
 		}
 
 

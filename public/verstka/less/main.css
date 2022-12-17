@@ -533,28 +533,40 @@ button.form:hover {
 }
 .bottom_block {
   background-color: #292522;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 150px;
+  padding-top: 145px;
+  position: relative;
+  width: 100%;
+  min-height: 740px;
 }
-@media screen and (max-width: 600px) {
+.bottom_link_block {
+  padding-left: 80px;
+  padding-right: 80px;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+}
+@media screen and (max-width: 1200px) {
   .bottom_block {
-    background-color: #292522;
+    padding-top: 90px;
+    min-height: 640px;
+  }
+  .bottom_link_block {
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 40px;
-    padding-bottom: 0px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .bottom_link_block {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .bottom_block {
     text-align: center;
+    height: 740px;
+    padding-top: 32px;
   }
   .bottom_block .right {
     text-align: center;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .bottom_block {
-    padding: 30px;
-    padding-bottom: 0px;
-    padding-top: 90px;
   }
 }
 .bottom_menu a {
@@ -575,6 +587,8 @@ button.form:hover {
   }
 }
 .support {
+  width: 100%;
+  text-align: center;
   border: 2px solid #ffffff;
   background-color: #292522;
   border-radius: 25px;
@@ -585,7 +599,6 @@ button.form:hover {
   font-size: 30px;
   text-decoration: none;
   display: inline-block;
-  text-align: left;
 }
 .support span {
   background: url(../images/telegram_white.svg);
@@ -618,7 +631,7 @@ button.form:hover {
 }
 @media screen and (max-width: 1200px) {
   .support {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 20px;
   }
   .support span {
@@ -627,8 +640,8 @@ button.form:hover {
 }
 @media screen and (max-width: 600px) {
   .support {
-    font-size: 1.3rem;
-    margin-top: 20px;
+    font-size: 1.6rem;
+    margin-top: 36px;
   }
   .bottom_menu p,
   .bottom_link p {
@@ -1042,6 +1055,9 @@ a.kill img {
 @media screen and (max-width: 600px) {
   .accordion-item {
     padding: 24px;
+  }
+  .accordion-body {
+    padding-right: 16px;
   }
 }
 .cart_white_block .nav-link {
@@ -1921,7 +1937,7 @@ a.backtolisting:hover {
   padding-right: 30px;
   margin-top: 60px;
   display: block;
-  margin-bottom: 50px;
+  margin-bottom: 0px;
 }
 .text_block .mentor {
   background-size: cover;
@@ -2004,17 +2020,17 @@ a.backtolisting:hover {
 @media (max-width: 1000px) {
   .mentor1 {
     margin-left: 267px;
-    margin-top: -100px;
+    margin-top: -80px;
     width: 219px;
     height: 267px;
   }
   .mentor2 {
-    margin-left: 602px;
-    margin-top: -250px;
+    margin-left: 522px;
+    margin-top: -230px;
   }
   .mentor3 {
     margin-left: 50px;
-    margin-top: -250px;
+    margin-top: -230px;
   }
   .text_block {
     padding-top: 50px;
@@ -2044,7 +2060,6 @@ a.backtolisting:hover {
     padding-right: 30px;
     margin-top: 30px;
     display: block;
-    margin-bottom: 50px;
     width: 100%;
   }
 }
@@ -2280,6 +2295,7 @@ a.backtolisting:hover {
 }
 .dark_block_index .faq {
   padding: 80px;
+  padding-bottom: 0px;
   padding-top: 140px;
   color: #ffffff;
 }
@@ -2330,12 +2346,10 @@ a.backtolisting:hover {
   background-image: url(../images/arrow-down-white.svg) !important;
   height: 1rem;
 }
-.dark_block_index .accordion-body {
-  padding-right: 80px;
-}
 @media screen and (max-width: 1200px) {
   .dark_block_index .faq {
     padding: 40px;
+    padding-bottom: 0px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -3297,43 +3311,15 @@ a.backtolisting:hover {
   margin-bottom: -1px;
 }
 .bottom_logo {
-  position: relative;
-  border: 0px solid red;
-  margin-top: 450px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 .logos {
   width: 100%;
   bottom: 0;
+  left: 0px;
   position: absolute;
-  bottom: 0px;
-  padding-left: 80px;
-  padding-right: 80px;
-}
-@media screen and (max-width: 1200px) {
-  .bottom_logo {
-    margin-top: 250px;
-  }
-  .bottom_menu a {
-    font-size: 2rem;
-  }
-  .logos {
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    bottom: 0px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-@media screen and (max-width: 600px) {
-  .logos {
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    bottom: 0px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+  border: 0px solid red;
 }
 .greencycle {
   position: absolute;
@@ -3344,14 +3330,27 @@ a.backtolisting:hover {
 .greencycle img {
   width: 60%;
 }
+@media screen and (max-width: 1200px) {
+  .bottom_logo {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .bottom_logo {
+    margin-top: 250px;
+  }
+  .bottom_menu a {
+    font-size: 2rem;
+  }
+}
 @media screen and (max-width: 600px) {
   .bottom_logo {
-    position: relative;
-    border: 0px solid red;
-    margin-top: 150px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
+}
+@media screen and (max-width: 600px) {
   .greencycle img {
-    width: 60%;
+    width: 90%;
     left: 0px;
   }
   .mentors .category {
