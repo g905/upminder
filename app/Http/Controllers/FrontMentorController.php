@@ -21,8 +21,97 @@ use App\Models\MentorSingleExperience;
 use App\Models\MentorSingleService;
 use App\Models\TaskType;
 use App\Models\CategoryTag;
+use App\Models\Review;
 
 class FrontMentorController extends Controller {
+	
+	/* Карточка */
+	public function card($id, Request $request) {
+		
+		$rec = Mentor::find($id);
+		if (!$rec) {
+			return redirect('/');
+		}
+		
+		/* Страна и город */
+		$country = $city = false;
+		$this_country = Country::find($rec->country_id);
+		$this_city = City::find($rec->city_id);
+		
+		if ($this_country) {
+			$country = $this_country->name;
+		}
+		if ($this_city) {
+			$city = $this_city->name;
+		}
+		
+		/* Теги ментора */
+		$tags = [];
+		$this_tags = MentorTag::where(['mentor_id' => $id])->get();
+		if ($this_tags) {
+			foreach ($this_tags as $tt) {
+				$tags[] = $tt->tag_id;
+			}
+		}
+		
+		$tags = CategoryTag::whereIn('id', $tags)->get();
+		
+		/* "Ментор сделает за вас". Услуги ментора */
+		$for_you = false;
+		$this_services = MentorSingleService::where(['mentor_id' => $id])->get();
+		if ($this_services) {
+			foreach ($this_services as $serv) {
+				
+				$this_s = MentorService::find($serv->service_id);
+				
+				if ($serv->currency_id == 2) {
+					
+					$for_you = true;
+					break;
+					
+				}
+			}
+		}
+		
+		/* Первая услуга */
+		$first_service = MentorSingleService::where(['mentor_id' => $id])->orderBy('id', 'desc')->first();		
+		if ($first_service) {
+			
+			$this_s = MentorService::find($first_service->service_id);
+			if ($this_s) {
+				$first_service->service = $this_s->name;
+			}
+			if ($first_service->discount) {
+			
+				$diff = $first_service->price * $first_service->discount / 100;
+				$new_price = $first_service->price - $diff;
+				$first_service->new_price = number_format($new_price, 0, '.', '');
+				$first_service->old_price = $first_service->price;
+			
+			}
+			
+		}
+		
+		/* Отзывы ментора */
+		$this_reviews = Review::where(['mentor_id' => $id])->get();
+		
+		/* Образование */
+		$this_edu = MentorSingleEducation::where(['mentor_id' => $id])->get();
+		
+		/* Опыт работы */
+		$this_exp = MentorSingleExperience::where(['mentor_id' => $id])->get();
+		if ($this_exp) {
+			foreach ($this_exp as $exp) {
+				
+				$this_company = Company::find($exp->company_id);
+				$exp->company = $this_company;
+				
+			}
+		}
+		
+		return view('front/mentor', compact('rec', 'tags', 'country', 'city', 'for_you', 'this_services', 'first_service', 'this_reviews', 'this_edu', 'this_exp'));
+		
+	}
 	
 	/* Список */
 	public function list(Request $request) {
@@ -44,9 +133,19 @@ class FrontMentorController extends Controller {
 			$cats = [];
 			$tags = [];
 			
+			if (empty($post_key)) {
+				$post_key = 'all';
+			}
+			
 			if (!empty($post_key)) {
 				
-				$categories = MentorCategory::where('name', 'LIKE', '%'.$post_key.'%')->orderBy('name', 'asc')->get();
+				if ($post_key !== 'all') {
+					$categories = MentorCategory::where('name', 'LIKE', '%'.$post_key.'%')->orderBy('name', 'asc')->get();
+				}
+				else {
+					$categories = MentorCategory::orderBy('id', 'desc')->get();
+				}
+				
 				if ($categories->count()) {
 					foreach ($categories as $cat) {
 							
@@ -60,7 +159,9 @@ class FrontMentorController extends Controller {
 								
 						}
 						
-						$cats[$this_parent->name][] = $cat;
+						if ($this_parent) {
+							$cats[$this_parent->name][] = $cat;
+						}
 							
 					}
 				}
@@ -329,7 +430,7 @@ class FrontMentorController extends Controller {
 					$result_mentors[$rmk][] = '<div class="row">';
 					$result_mentors[$rmk][] = '<div class="col-lg-2 col-md-3  d-none d-md-block">';
 					$result_mentors[$rmk][] = '<div style="text-align: center; position: relative">';
-					$result_mentors[$rmk][] = '<a href="cart.html">';
+					$result_mentors[$rmk][] = '<a href="'.route('front.mentor', $m->id).'">';
 					$result_mentors[$rmk][] = '<div class="ava_block" style="background-image: url('.$mentor_img.');"></div>';
 					$result_mentors[$rmk][] = '<span class="mentorday">Ментор дня</span>';
 										
@@ -339,12 +440,12 @@ class FrontMentorController extends Controller {
 					$result_mentors[$rmk][] = '</div>';
 					$result_mentors[$rmk][] = '<div class="col-lg-7 col-md-5">';
 					$result_mentors[$rmk][] = '<div class="d-block d-md-none" style="float:left; width: 30%; border:0px solid red; margin-right: 8px; margin-top: 20px;">';
-					$result_mentors[$rmk][] = '<a href="cart.html">';
+					$result_mentors[$rmk][] = '<a href="'.route('front.mentor', $m->id).'">';
 					$result_mentors[$rmk][] = '<span class="mentorday">Ментор дня</span><img src="/verstka/images/mentors/02.jpg" class="img-fluid">';
 					$result_mentors[$rmk][] = '</a>';
 					$result_mentors[$rmk][] = '</div>';
 					$result_mentors[$rmk][] = '<h3>';
-					$result_mentors[$rmk][] = '<a href="cart.html">'.$m->first_name.' '.$m->last_name.'</a>';
+					$result_mentors[$rmk][] = '<a href="'.route('front.mentor', $m->id).'">'.$m->first_name.' '.$m->last_name.'</a>';
 					
 					if ($m->verified) {
 						$result_mentors[$rmk][] = '<span class="verified"></span>';

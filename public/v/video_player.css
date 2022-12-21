@@ -1,0 +1,13 @@
+.playerjs_subtitle_word{
+   cursor:pointer;
+}
+.playerjs_subtitle_word:hover{
+   color:yellow;
+}
+#playerjs_subtitle_box{
+   color:orange;
+   padding:4px 7px;
+   background:rgba(0,0,0,0.8);
+    position:absolute;
+   top:0;left:0;
+}

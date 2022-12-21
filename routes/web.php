@@ -153,5 +153,6 @@ Route::prefix('control')->middleware('auth')->group(function () {
 });
 
 Route::get('/get-avatar/{name}', [MentorController::class, 'getAvatar'])->name('get.avatar');
+Route::get('/mentor/{id}', [App\Http\Controllers\FrontMentorController::class, 'card'])->name('front.mentor');
 Route::get('/mentors', [App\Http\Controllers\FrontMentorController::class, 'list'])->name('front.mentors');
 Route::post('/mentors', [App\Http\Controllers\FrontMentorController::class, 'list'])->name('front.mentors');
