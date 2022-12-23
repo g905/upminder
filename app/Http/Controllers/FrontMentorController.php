@@ -843,39 +843,25 @@ class FrontMentorController extends Controller {
         if (!$request->ajax()) {
             return false;
         }
-
-
         if ($request->get("type") === "tags") {
             if (!$request->get("id")) {
                 return false;
             }
-
             $catId = $request->get("id");
-
             $tags = Mentor::getTagsByCatId($catId);
-
             $tagsHtml = view('front.tags', ['tags' => $tags]);
-
             return $tagsHtml->render();
         }
-
         if ($request->get("type") === "mentors") {
             $form = $request->get('form');
-
             $mentors = Mentor::getByForm($form);
 
-            $mentorsHtml = view('front.mentors', ['mentors' => $mentors]);
-
-            return $mentorsHtml->render();
+            $html = count($mentors) ? view('front.mentors', ['mentors' => $mentors]) : view('front.empty');
+            return $html->render();
         }
-
         $filters["cat"] = $request->get("val");
         $mentors = Mentor::filter($filters);
-
-        //return json_encode($mentors);
-
         $catHtml = view('front.cats', ['catsTree' => $mentors]);
-
         return $catHtml->render();
     }
 

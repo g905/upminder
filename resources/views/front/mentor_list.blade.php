@@ -25,7 +25,7 @@
                 <div class="right"><a href="{{ route('front.mentors') }}" class="kill">Сбросить <img src="/verstka/images/close_white.svg"></a></div>
             </div>
             <h2 class="hc">С чем нужно помочь?</h2>
-            <div class="tag_block"></div>
+            <div class="tags_block"></div>
             <div class="checkbox_block">
                 <span><input class="form-check-input updateForm" type="checkbox" value="1" name="for_you" id="isForYou">
                     <label class="form-check-label" for="isForYou" > Ментор сделает за вас </label></span>
@@ -50,16 +50,7 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="mentors_list"></div>
-                <!--<div class="cart_block nospec">
-                    <div class="row align-items-center">
-                        <div>
-                            <img src="/verstka/images/hm_smile.svg">
-                            <div class="desc">Ничего не найдено</div>
-                            <div class="desc">Отправьте нам заявку и мы подберём вам ментора </div>
-                            <button class="def form" >Отправить заявку <img src="/verstka/images/telegram.svg"> </button>
-                        </div>
-                    </div>
-                </div>-->
+
             </div>
             <div class="paginator" style="display: none;">
                 <ul class="nav justify-content-center">
@@ -166,15 +157,15 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
-                    $('.tag_block').html("");
-                    $('.tag_block').fadeOut(200, () => {
+                    $('.tags_block').html("");
+                    $('.tags_block').fadeOut(200, () => {
 
                     });
                 },
                 success: (data) => {
                     console.log(data);
-                    $('.tag_block').append(data);
-                    $('.tag_block').fadeIn(200);
+                    $('.tags_block').append(data);
+                    $('.tags_block').fadeIn(200);
                 },
                 error: (err) => {
                     console.log(err);
@@ -197,7 +188,7 @@
 
 
 
-        $('body').on('click', '.def.search', function (e) {
+        $('#mentorSearch').on('click', '.def.search', function (e) {
             e.preventDefault(e);
             let form = $('#mentorSearch');
 
@@ -233,7 +224,7 @@
             $('#mentorSearch').find('input').each(function (idx, el) {
                 $(el).val("");
             });
-            $('.tag_block').html("");
+            $('.tags_block').html("");
         })
 
 

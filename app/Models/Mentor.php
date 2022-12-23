@@ -112,11 +112,6 @@ class Mentor extends Model {
             $t[] = $pca;
         }
 
-        /* $mentors = \Illuminate\Support\Facades\DB::table('mentors')
-          ->join('mentor_single_categories', 'mentors.id', 'mentor_single_categories.mentor_id')
-          ->join('mentor_categories', 'mentor_categories.id', 'mentor_single_categories.category_id')
-          ->whereIn('mentor_single_categories.category_id', $catIds)->get("mentors.email"); */
-
         return $t;
     }
 
@@ -148,6 +143,7 @@ class Mentor extends Model {
             }
         }
 
+
         $q = \Illuminate\Support\Facades\DB::table('mentors')
                 ->join('mentor_tags', 'mentors.id', 'mentor_tags.mentor_id')
                 ->join('category_tags', 'mentor_tags.tag_id', 'category_tags.id')
@@ -163,12 +159,18 @@ class Mentor extends Model {
         }
 
         if ($vip) {
-            //$q->where('mentors.vip_status', '=', 1);
+            $q->where('mentors.vip_status', '=', 1);
         }
 
-        $mentors = $q->distinct()->get("mentors.*");
+        $mentors = $q->distinct()->get(["mentors.id"]);
 
-        return $mentors;
+        foreach ($mentors as $m) {
+            $ids[] = $m->id;
+        }
+
+        $data = self::findMany($ids);
+
+        return $data;
     }
 
 }
