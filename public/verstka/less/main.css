@@ -801,6 +801,10 @@ a.filter_collapse {
   margin-top: 140px;
   margin-bottom: 40px;
 }
+.cart_white_block .cart_faq_block .accordion h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 @media screen and (max-width: 1000px) {
   .cart_white_block {
     padding-left: 40px;
@@ -3665,4 +3669,24 @@ a.backtolisting:hover {
     min-width: 300px;
     border: 0px solid red;
   }
+}
+.exp {
+  font-size: 31px;
+}
+.exp_logo {
+  max-width: 100px;
+  border: 5px solid white;
+}
+.exp_table {
+  width: 100%;
+  margin-top: 32px;
+  font-size: 16px;
+}
+.exp_table td {
+  border: 0px solid red;
+  vertical-align: top;
+  padding: 5px;
+}
+.exp_note {
+  font-size: 20px;
 }

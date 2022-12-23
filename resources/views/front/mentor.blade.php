@@ -2,7 +2,7 @@
 
 @section('content')
 <div class=dark_block_head>
-   <!-- начинается карточка --> 
+   <!-- начинается карточка -->
    <div class=dark_mentor_block>
       <a href="{{ route('front.mentors') }}" class=backtolisting><img src="/verstka/images/back.svg"> Вернуться к списку менторов</a>
       <div class=cart_min_block>
@@ -18,20 +18,20 @@
             <div class="col-lg-6 ">
                <h1>{{ $rec->first_name }} {{ $rec->last_name }}
 				@if ($rec->is_verified)
-					<img src="/verstka/images/cart_icon/verify.svg" class=verify> 
+					<img src="/verstka/images/cart_icon/verify.svg" class=verify>
 				@endif
 			   </h1>
                <div class=prof>Ведущий программист в <a href=# class=company>Beeline <img src="/verstka/images/arrow-right.svg"></a></div>
-               <div class=company_desc>Beeline растит новых специалистов через платформу и развивает отрасль</div>
+               <div class=company_desc>{{ $rec->description }}</div>
                <div class=tag_block>
-                  <!-- специальные теги  --> 
+                  <!-- специальные теги  -->
 				  @if ($for_you)
-					<a href=# class="tag spectag">Ментор сделает за вас&nbsp;<img src="/verstka/images/force.svg"></a> 
+					<a href=# class="tag spectag">Ментор сделает за вас&nbsp;<img src="/verstka/images/force.svg"></a>
 				  @endif
 				  @if ($rec->vip_status)
-					<a href=# class="tag spectag">VIP-ментор&nbsp;<img src="/verstka/images/smile.svg"></a> 
+					<a href=# class="tag spectag">VIP-ментор&nbsp;<img src="/verstka/images/smile.svg"></a>
                   @endif
-				  <!-- конец блока --> 
+				  <!-- конец блока -->
 				  @if ($tags)
 					  @foreach ($tags as $tag)
 						<a href="#" class="tag">{{ $tag->name }}</a>
@@ -39,7 +39,7 @@
 					@endif
                </div>
                <div class=feature>
-                  <div class="d-none d-lg-block"> <img src="/verstka/images/cart_icon/rocket.svg"> Опыт 7 лет </div>
+                  <div class="d-none d-lg-block"> <img src="/verstka/images/cart_icon/rocket.svg"> Опыт {{ $rec->experience }} </div>
                   <div class="d-none d-lg-block" ><img src="/verstka/images/cart_icon/bookmark.svg"> Проведено 0 занятий</div>
                   <div  ><img src="/verstka/images/cart_icon/geo2.svg"> {{ $country }}, {{ $city }}</div>
                   <div><img src="/verstka/images/cart_icon/globe.svg"> Русский, English</div>
@@ -48,11 +48,11 @@
             <div class="col-lg-3 ">
                <div class=float_price_block>
 					@if ($first_service->new_price)
-						<span class=active_price>{{ $first_service->new_price }} <span class=rub>$</span></span>
-						<span class=old_price>{{ $first_service->old_price }} <span class=rub>$</span></span>
+						<span class=active_price>{{ $first_service->new_price }} <span class=rub>Р</span></span>
+						<span class=old_price>{{ $first_service->old_price }} <span class=rub>Р</span></span>
 						<span class=active_price>/час</span>
 					@else
-						
+
 					@endif
                   <div class=sale>{{ $first_service->service }} @if ($first_service->discount)(-{{ $first_service->discount }}%@endif</div>
                   <div style="margin-top:50px;"><a href=# class=request  data-bs-toggle="modal" data-bs-target="#personalmentormodal">Записаться</a> <a href=#more class=enter>Подробнее</a>  </div>
@@ -86,24 +86,52 @@
 						@foreach ($this_edu as $edu)
 							<p>С {{ $edu->date_start }} по {{ $edu->date_end }}</p>
 							<p><strong>{{ $edu->course }} в "{{ $edu->school }}"</strong></p>
-							@if ($edu->present) 
+							@if ($edu->present)
 								<p><i>Продолжает обучение</i></p>
 							@endif
 						@endforeach
-					@endif 
+					@endif
 				  </div>
                   <div class="tab-pane fade" id="nav-cv" role="tabpanel" aria-labelledby="nav-contact-tab">
-					@if ($this_exp)
-						@foreach ($this_exp as $exp)
-							<p>С {{ $exp->date_start }} по {{ $exp->date_end }}</p>
-							<p><strong>@if ($rec->position) {{ $exp->position }} @else ДОЛЖНОСТЬ @endif в "{{ $exp->company->name }}"</strong></p>					
-							@if ($exp->present) 
-								<p><i>Продолжает работать</i></p>
-							@endif
-							@if ($exp->company->logo)
-								<div style="width: 100px; height: 100px; background-image: url({{ route('get.avatar', $exp->company->logo) }}); background-size: cover; border: 5px solid #cdcdcd;"></div>
-							@endif
-							<br />
+
+                    <div class=exp>Опыт работы: {{ $rec->experience }} </div>
+
+
+
+
+
+        	@if ($this_exp)
+
+	@foreach ($this_exp as $exp)
+
+<table class=exp_table>
+
+  <tr>
+    <td style="width:0%" >	@if ($exp->company->logo)
+       <img src="{{ route('get.avatar', $exp->company->logo) }}" class=exp_logo>
+     @endif</td>
+  <td>
+
+
+    <p class=exp_note>@if ($rec->position) {{ $exp->position }} @else Должность не указана  @endif, {{ $exp->company->name }}</p>
+
+                          <p>С {{ $exp->date_start }} по {{ $exp->date_end }}</p>
+            							@if ($exp->present)
+            								<p>По настоящее время</p>
+            							@endif
+
+            							
+</td>
+  </tr>
+
+
+</table>
+
+
+
+
+
+
 						@endforeach
 					@endif
 				  </div>
@@ -113,43 +141,45 @@
          </div>
          <h2 class=stz>Стоимость занятий</h2>
          <div class=service_block>
-            <!-- тут надо придумать цикл  который будет выстраивать по три блока в строку -->	
+            <!-- тут надо придумать цикл  который будет выстраивать по три блока в строку -->
             @if ($this_services)
 				@foreach ($this_services as $serv)
-			
+
 					@if ($serv->currency_id !== 1)
 						@continue
 					@endif
-					
+
 			<div class=white_block >
                <div>{{ $serv->service->name }}</div>
-               <span class=active_price>{{ $serv->price }} <span class=rub>$</span></span><span class=active_price>/час</span>
+               <span class=active_price>{{ $serv->price }} <span class=rub>Р</span></span><span class=active_price>/час</span>
                @if ($serv->discount > 0)
 				<div class=sale>Скидка - {{ $serv->discount }}%</div>
 				@endif
             </div>
-					
+
 				@endforeach
 			@endif
          </div>
          <h2>Дополнительные услуги</h2>
          <div class=service_block>
-            <!-- тут надо придумать цикл  который будет выстраивать по три блока в строку -->	
+            <!-- тут надо придумать цикл  который будет выстраивать по три блока в строку -->
             @if ($this_services)
 				@foreach ($this_services as $serv)
-			
+
+
+
 					@if ($serv->currency_id !== 2)
 						@continue
 					@endif
-					
+
 			<div class=white_block >
-					<div>{{ $serv->service->name }}</div>	
-               <span class=active_price>{{ $serv->price }} <span class=rub>$</span></span><span class=active_price>/час</span>
+					<div>{{ $serv->service->name }}</div>
+               <span class=active_price>{{ $serv->price }} <span class=rub>Р</span></span><span class=active_price>/час</span>
                @if ($serv->discount > 0)
 				<div class=sale>Скидка - {{ $serv->discount }}%</div>
 				@endif
             </div>
-					
+
 				@endforeach
 			@endif
          </div>

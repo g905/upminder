@@ -15,7 +15,7 @@
                     <span class="mentorday">Ментор дня</span><img src="{{ Storage::disk('public')->url('avatar/' . $mentor->avatar) }}" class="img-fluid">
                 </a>
             </div>
-            <h3><a href="cart.html">{{ $mentor->first_name }} {{ $mentor->last_name }}</a></h3>
+            <h3><a href="cart.html">{{ $mentor->first_name }} {{ $mentor->last_name }} </a></h3>
             <div class="prof">Ведущий программист в <a href="#" class="company">Beeline</a></div>
             <span class="address"><img src="/verstka/images/geo.svg"> Moscow, Russia (+03:00 UTC)</span> <span class="language"><img src="/verstka/images/lang.svg"> Русский, English</span>
             <div class="desc d-none d-md-block">{{ $mentor->description }}</div>
