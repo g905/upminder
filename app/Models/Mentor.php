@@ -91,6 +91,28 @@ class Mentor extends Model {
         return $this->hasMany(MentorSingleService::class, 'mentor_id', 'id');
     }
 
+    public function getDefaultService() {
+        return count($this->services) ? $this->services[0] : false;
+    }
+
+    public function getActivePrice() {
+        $svc = $this->getDefaultService();
+        return $svc ? (int) ($svc->price - ($svc->price / 100 * $svc->discount)) : false;
+    }
+
+    public function getDefaultCurrency() {
+        return $this->getDefaultService()->currency;
+    }
+
+    public function getAdditionalServices() {
+        //hasManyThrough лучше
+        $q = \Illuminate\Support\Facades\DB::table('mentors')
+                ->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id')
+                ->join('mentor_services', 'mentor_services.id', 'mentor_single_services.service_id')
+                ->where(['mentor_services.type_service' => 2, "mentors.id" => $this->id]);
+        return $q->get("mentor_services.*");
+    }
+
     public static function filter(array $filters) {
         $cat = $filters["cat"];
         $catIds = MentorCategory::where("name", "like", "%" . $cat . "%")->get(["id", "parent_id", "name"]);
@@ -138,8 +160,10 @@ class Mentor extends Model {
                 $forYou = (bool) $row["value"];
             }
             if ($row["name"] === "vip") {
-
                 $vip = (bool) $row["value"];
+            }
+            if ($row["name"] === "sort") {
+                $sort = $row["value"];
             }
         }
 
@@ -158,23 +182,31 @@ class Mentor extends Model {
             $q->where('mentor_single_categories.category_id', "=", $cat);
         }
 
-        //die(json_encode($vip));
-
         if ($vip) {
             $q->where('mentors.vip_status', '=', 1);
         }
 
         $q->where("mentors.is_active", "=", 1);
 
-        $mentors = $q->distinct()->get(["mentors.id"]);
+        $mentorIds = $q->distinct()->get(["mentors.id"]);
 
-        $ids = [];
+        $mentors = self::findMany($mentorIds->pluck('id'));
 
-        foreach ($mentors as $m) {
-            $ids[] = $m->id;
+        switch ($sort) {
+            case "lessons":
+                break;
+            case "price_asc":
+                break;
+            case "price_desc":
+                break;
+            default:
+                //die(json_encode($sort));
+                break;
         }
 
-        return self::findMany($ids);
+        $m = $mentors->sortByDesc('id');
+
+        return $m;
     }
 
 }

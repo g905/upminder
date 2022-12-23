@@ -856,7 +856,7 @@ class FrontMentorController extends Controller {
             $form = $request->get('form');
             $mentors = Mentor::getByForm($form);
 
-            $html = count($mentors) ? view('front.mentors', ['mentors' => $mentors]) : view('front.empty');
+            $html = view('front.result', ['mentors' => $mentors, "count" => count($mentors)]);
             return $html->render();
         }
         $filters["cat"] = $request->get("val");

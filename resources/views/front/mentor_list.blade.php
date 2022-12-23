@@ -6,6 +6,7 @@
         <h1>Выбираем ментора</h1>
         <form id="mentorSearch">
             <input type="hidden" class="cat" name="cat" value="">
+            <input type="hidden" class="sort" name="sort" value="">
             <div class="d-none d-sm-block">
                 <div class="row" >
                     <div class="col-xs-6 col-md-8 col-lg-10 keysList position-relative" style="border:0px solid red">
@@ -35,31 +36,10 @@
         </form>
     </div>
 </div>
+
 <div class="container">
     <div class="row listing_block" style="margin-top: 30px;" >
-        <div class="col-lg-12 ">
-            <div class="listing_block">
-                <div class="result">Подобрали для вас <span id="count">0</span> наставников</div>
-                <div class="sort">
-                    <select class="sortList form-select form-select-lg mb-3 select-css" aria-label=".form-select-lg example">
-                        <option value="id">По умолчанию</option>
-                        <option value="lessons">По количеству занятий</option>
-                        <option value="price_asc">По цене дешевле</option>
-                        <option value="price_desc">По цене дороже</option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-                <div class="mentors_list"></div>
 
-            </div>
-            <div class="paginator" style="display: none;">
-                <ul class="nav justify-content-center">
-                    <li class="nav-item"> <a class="nav-link" href="#">1</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">2</a> </li>
-                    <li class="nav-item"> <a class="nav-link active">3</a> </li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -205,10 +185,11 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
-                    $('.mentors_list').html("");
+                    $('.listing_block').html("");
                 },
                 success: (data) => {
-                    $('.mentors_list').append(data);
+                    console.log(data);
+                    $('.listing_block').append(data);
                 },
                 error: (err) => {
                     console.log(err);
@@ -227,6 +208,14 @@
             });
             $('.tags_block').html("");
         })
+
+
+
+
+
+        $('body').on('change', '.sortList', function () {
+            $('#mentorSearch').find('.sort').val($(this).val());
+        });
 
 
     });
