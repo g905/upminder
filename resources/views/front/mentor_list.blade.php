@@ -157,6 +157,7 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
+                    $('.mentors_list').html("");
                     $('.tags_block').html("");
                     $('.tags_block').fadeOut(200, () => {
 
@@ -188,12 +189,12 @@
 
 
 
-        $('#mentorSearch').on('click', '.def.search', function (e) {
+        $('body').on('click', 'button.def.search', function (e) {
             e.preventDefault(e);
             let form = $('#mentorSearch');
 
             let data = $(form).serializeArray();
-
+            console.log(data);
             $.ajax({
                 headers: headers,
                 data: {
@@ -259,6 +260,10 @@
     .cats-tree {
     }
 
+    label.tag {
+        position: relative;
+    }
+
     label.tag:hover {
         opacity: .8;
         background: #fff !important;
@@ -278,6 +283,35 @@
 
     label.tag input[type="checkbox"] {
         display: none;
+    }
+
+    .tag-close {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: -10px;
+        top: -10px;
+        background: white;
+        border-radius: 10px;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        border: 2px solid #666;
+        transition: opacity .2s ease-in-out;
+    }
+
+    .tag-close:hover {
+        opacity: .8;
+    }
+
+    label.tag .tag-close {
+        opacity: 0;
+    }
+
+    label.tag.checked .tag-close {
+        color: #666;
+        opacity: 1;
     }
 
 </style>

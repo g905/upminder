@@ -30,12 +30,6 @@
                 @foreach($mentor->tags as $tag)
                 <a href="#" class="tag">{{ $tag->name }}</a>
                 @endforeach
-
-                <!--<a href="#" class="tag">Юридические вопросы</a>
-                <a href="#" class="tag">Аналитика</a>
-                <a href="#" class="tag">Проектирование сайта</a>
-                <a href="#" class="tag">Подготовка к собеседованию</a>
-                <a href="#" class="tag">Маркетинговая стратегия</a>-->
             </div>
         </div>
         <div class="col-lg-3 col-md-4" >

@@ -137,8 +137,8 @@ class Mentor extends Model {
             if ($row["name"] === "for-you") {
                 $forYou = (bool) $row["value"];
             }
-
             if ($row["name"] === "vip") {
+
                 $vip = (bool) $row["value"];
             }
         }
@@ -158,9 +158,13 @@ class Mentor extends Model {
             $q->where('mentor_single_categories.category_id', "=", $cat);
         }
 
+        //die(json_encode($vip));
+
         if ($vip) {
             $q->where('mentors.vip_status', '=', 1);
         }
+
+        $q->where("mentors.is_active", "=", 1);
 
         $mentors = $q->distinct()->get(["mentors.id"]);
 
@@ -170,9 +174,7 @@ class Mentor extends Model {
             $ids[] = $m->id;
         }
 
-        $data = self::findMany($ids);
-
-        return $data;
+        return self::findMany($ids);
     }
 
 }
