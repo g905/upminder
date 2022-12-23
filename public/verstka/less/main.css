@@ -4,12 +4,12 @@
 /* Обычный */
 @font-face {
   font-family: 'neue';
-  src: url(../font/PPNeueMontreal-Medium.otf);
+  src: url(/verstka/font/PPNeueMontreal-Medium.otf);
 }
 /* Жирный */
 @font-face {
   font-family: 'neuebook';
-  src: url(../font/PPNeueMontreal-Book.otf);
+  src: url(/verstka/font/PPNeueMontreal-Book.otf);
 }
 html,
 p,
@@ -151,7 +151,7 @@ input.def {
   padding-left: 50px;
 }
 input.search {
-  background-image: url(../images/search.svg);
+  background-image: url(/verstka/images/search.svg);
   background-repeat: no-repeat;
   background-position: left ;
   background-position-x: 20px;
@@ -601,7 +601,7 @@ button.form:hover {
   display: inline-block;
 }
 .support span {
-  background: url(../images/telegram_white.svg);
+  background: url(/verstka/images/telegram_white.svg);
   background-repeat: no-repeat;
   width: 29px;
   height: 24px;
@@ -610,7 +610,7 @@ button.form:hover {
   margin-bottom: -2px;
 }
 .support:hover span {
-  background: url(../images/telegram_green.svg);
+  background: url(/verstka/images/telegram_green.svg);
   background-repeat: no-repeat;
   transition: 0.5s;
 }
@@ -1346,7 +1346,7 @@ a.backtolisting:hover {
   height: 100%;
 }
 .carousel-item .img {
-  background-image: url(../images/mentors/01.jpg);
+  background-image: url(/verstka/images/mentors/01.jpg);
   background-position: center;
   background-size: cover;
   height: 800px;
@@ -1447,7 +1447,7 @@ a.backtolisting:hover {
 .polezno_block .one,
 .polezno_block .two {
   background-color: #ffffff;
-  background-image: url(../images/bg_white.png);
+  background-image: url(/verstka/images/bg_white.png);
   background-size: cover ;
   color: #292522;
   border-radius: 25px;
@@ -1475,14 +1475,14 @@ a.backtolisting:hover {
   margin-left: 0px;
 }
 .polezno_block .one:hover {
-  background-image: url(../images/index/foto1.jpg);
+  background-image: url(/verstka/images/index/foto1.jpg);
   background-repeat: no-repeat;
   background-size: cover ;
   margin-left: 0px;
   transition: 1s;
 }
 .polezno_block .two:hover {
-  background-image: url(../images/index/foto2.jpg);
+  background-image: url(/verstka/images/index/foto2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   transition: 1s;
@@ -1527,22 +1527,22 @@ a.backtolisting:hover {
     background-color: #57ff7c;
   }
   .polezno_block .one {
-    background-image: url(../images/index/foto1_m.jpg);
+    background-image: url(/verstka/images/index/foto1_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .polezno_block .two {
-    background-image: url(../images/index/foto2_m.jpg);
+    background-image: url(/verstka/images/index/foto2_m.jpg);
     background-size: cover;
     margin-left: 1px;
   }
   .polezno_block .one:hover {
-    background-image: url(../images/index/foto1_m.jpg);
+    background-image: url(/verstka/images/index/foto1_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .polezno_block .two:hover {
-    background-image: url(../images/index/foto2_m.jpg);
+    background-image: url(/verstka/images/index/foto2_m.jpg);
     background-size: cover;
   }
 }
@@ -1619,22 +1619,22 @@ a.backtolisting:hover {
     background-color: #57ff7c;
   }
   .polezno_block .one {
-    background-image: url(../images/index/foto1_m.jpg);
+    background-image: url(/verstka/images/index/foto1_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .polezno_block .two {
-    background-image: url(../images/index/foto2_m.jpg);
+    background-image: url(/verstka/images/index/foto2_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .polezno_block .one:hover {
-    background-image: url(../images/index/foto1_m.jpg);
+    background-image: url(/verstka/images/index/foto1_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .polezno_block .two:hover {
-    background-image: url(../images/index/foto2_m.jpg);
+    background-image: url(/verstka/images/index/foto2_m.jpg);
     background-size: cover;
   }
 }
@@ -1680,7 +1680,7 @@ a.backtolisting:hover {
 .zadachi_block .three {
   background-color: #ffffff;
   color: #292522;
-  background-image: url(../images/bg_white.png);
+  background-image: url(/verstka/images/bg_white.png);
   border-radius: 25px;
   padding: 30px;
   padding-right: 100px;
@@ -1717,18 +1717,18 @@ a.backtolisting:hover {
   margin-left: 0px;
 }
 .zadachi_block .one:hover {
-  background-image: url(../images/index/foto4_m.jpg);
+  background-image: url(/verstka/images/index/foto4_m.jpg);
   background-repeat: no-repeat;
   background-size: cover ;
   margin-left: 0px;
 }
 .zadachi_block .two:hover {
-  background-image: url(../images/index/foto5_m.jpg);
+  background-image: url(/verstka/images/index/foto5_m.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
 .zadachi_block .three:hover {
-  background-image: url(../images/index/foto6_m.jpg);
+  background-image: url(/verstka/images/index/foto6_m.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1760,34 +1760,34 @@ a.backtolisting:hover {
     margin-bottom: 0px;
   }
   .zadachi_block .one {
-    background-image: url(../images/index/foto4.jpg);
+    background-image: url(/verstka/images/index/foto4.jpg);
     background-repeat: no-repeat;
     background-size: 100% ;
     margin-left: 0px;
   }
   .zadachi_block .two {
-    background-image: url(../images/index/foto5.jpg);
+    background-image: url(/verstka/images/index/foto5.jpg);
     background-repeat: no-repeat;
     background-size: cover;
   }
   .zadachi_block .three {
-    background-image: url(../images/index/foto6.jpg);
+    background-image: url(/verstka/images/index/foto6.jpg);
     background-repeat: no-repeat;
     background-size: cover;
   }
   .zadachi_block .one:hover {
-    background-image: url(../images/index/foto4.jpg);
+    background-image: url(/verstka/images/index/foto4.jpg);
     background-repeat: no-repeat;
     background-size: cover ;
     margin-left: 0px;
   }
   .zadachi_block .two:hover {
-    background-image: url(../images/index/foto5.jpg);
+    background-image: url(/verstka/images/index/foto5.jpg);
     background-repeat: no-repeat;
     background-size: cover;
   }
   .zadachi_block .three:hover {
-    background-image: url(../images/index/foto6.jpg);
+    background-image: url(/verstka/images/index/foto6.jpg);
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -1856,32 +1856,32 @@ a.backtolisting:hover {
     background-color: #57ff7c;
   }
   .zadachi_block .one {
-    background-image: url(../images/index/foto4_m.jpg);
+    background-image: url(/verstka/images/index/foto4_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .zadachi_block .two {
-    background-image: url(../images/index/foto5_m.jpg);
+    background-image: url(/verstka/images/index/foto5_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .zadachi_block .three {
-    background-image: url(../images/index/foto6_m.jpg);
+    background-image: url(/verstka/images/index/foto6_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .zadachi_block .one:hover {
-    background-image: url(../images/index/foto4_m.jpg);
+    background-image: url(/verstka/images/index/foto4_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .zadachi_block .two:hover {
-    background-image: url(../images/index/foto5_m.jpg);
+    background-image: url(/verstka/images/index/foto5_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .zadachi_block .three:hover {
-    background-image: url(../images/index/foto6_m.jpg);
+    background-image: url(/verstka/images/index/foto6_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
@@ -1959,7 +1959,7 @@ a.backtolisting:hover {
   position: relative;
   transform: scale(1);
   margin-left: 112px;
-  background-image: url(../images/mentors/02.jpg);
+  background-image: url(/verstka/images/mentors/02.jpg);
   width: 300px;
   height: 400px;
 }
@@ -1968,7 +1968,7 @@ a.backtolisting:hover {
   transform: scale(1);
   margin-top: 48px;
   margin-left: 48px;
-  background-image: url(../images/mentors/03.jpg);
+  background-image: url(/verstka/images/mentors/03.jpg);
   width: 200px;
   height: 300px;
 }
@@ -1977,7 +1977,7 @@ a.backtolisting:hover {
   transform: scale(1);
   margin-left: 300px;
   margin-top: -200px;
-  background-image: url(../images/mentors/04.jpg);
+  background-image: url(/verstka/images/mentors/04.jpg);
   width: 200px;
   height: 285px;
 }
@@ -2286,11 +2286,11 @@ a.backtolisting:hover {
   }
 }
 .cart_faq_block .accordion-button:not(.collapsed)::after {
-  background-image: url(../images/arrow-down-black.svg) !important;
+  background-image: url(/verstka/images/arrow-down-black.svg) !important;
   margin-top: 0px !important;
 }
 .cart_faq_block .accordion-button::after {
-  background-image: url(../images/arrow-down-black.svg) !important;
+  background-image: url(/verstka/images/arrow-down-black.svg) !important;
   margin-top: 10px !important;
 }
 .dark_block_index .faq {
@@ -2311,7 +2311,7 @@ a.backtolisting:hover {
   color: #37e45e;
 }
 .dark_block_index .faq .more span {
-  background: url(../images/arrow-right-white.svg);
+  background: url(/verstka/images/arrow-right-white.svg);
   background-repeat: no-repeat;
   width: 16px;
   height: 16px;
@@ -2320,7 +2320,7 @@ a.backtolisting:hover {
   margin-bottom: -2px;
 }
 .dark_block_index .faq .more:hover span {
-  background: url(../images/arrow-right-green.svg);
+  background: url(/verstka/images/arrow-right-green.svg);
   background-repeat: no-repeat;
   transition: 0.5s;
 }
@@ -2340,10 +2340,10 @@ a.backtolisting:hover {
   color: #ffffff;
 }
 .dark_block_index .faq .accordion-button:not(.collapsed)::after {
-  background-image: url(../images/arrow-down-white.svg) !important;
+  background-image: url(/verstka/images/arrow-down-white.svg) !important;
 }
 .dark_block_index .faq .accordion-button::after {
-  background-image: url(../images/arrow-down-white.svg) !important;
+  background-image: url(/verstka/images/arrow-down-white.svg) !important;
   height: 1rem;
 }
 @media screen and (max-width: 1200px) {
@@ -2612,21 +2612,21 @@ a.backtolisting:hover {
     background-color: #37e45e;
   }
   .about .polezno_block .one {
-    background-image: url(../images/index/foto1_m.jpg);
+    background-image: url(/verstka/images/index/foto1_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .about .polezno_block .two {
-    background-image: url(../images/index/foto2_m.jpg);
+    background-image: url(/verstka/images/index/foto2_m.jpg);
     background-size: cover;
   }
   .about .polezno_block .one:hover {
-    background-image: url(../images/index/foto1_m.jpg);
+    background-image: url(/verstka/images/index/foto1_m.jpg);
     background-size: cover;
     margin-left: 0px;
   }
   .about .polezno_block .two:hover {
-    background-image: url(../images/index/foto2_m.jpg);
+    background-image: url(/verstka/images/index/foto2_m.jpg);
     background-size: cover;
   }
 }
@@ -2844,7 +2844,7 @@ a.backtolisting:hover {
 .mentors .category .three,
 .mentors .category .four {
   background-color: #ffffff;
-  background-image: url(../images/bg_white.png);
+  background-image: url(/verstka/images/bg_white.png);
   background-size: cover ;
   color: #292522;
   border-radius: 25px;
@@ -2883,25 +2883,25 @@ a.backtolisting:hover {
   color: #ffffff;
 }
 .mentors .category .one:hover {
-  background-image: url(../images/mentorpage/foto01.jpg);
+  background-image: url(/verstka/images/mentorpage/foto01.jpg);
   background-size: cover;
   margin-left: 0px;
   transition: 1s;
 }
 .mentors .category .two:hover {
-  background-image: url(../images/mentorpage/foto02.jpg);
+  background-image: url(/verstka/images/mentorpage/foto02.jpg);
   background-size: cover;
   margin-left: 0px;
   transition: 1s;
 }
 .mentors .category .three:hover {
-  background-image: url(../images/mentorpage/foto03.jpg);
+  background-image: url(/verstka/images/mentorpage/foto03.jpg);
   background-size: cover;
   margin-left: 0px;
   transition: 1s;
 }
 .mentors .category .four:hover {
-  background-image: url(../images/mentorpage/foto04.jpg);
+  background-image: url(/verstka/images/mentorpage/foto04.jpg);
   background-size: cover;
   margin-left: 0px;
   transition: 1s;
@@ -3107,22 +3107,22 @@ a.backtolisting:hover {
     color: #ffffff;
   }
   .mentors .category .one {
-    background-image: url(../images/mentorpage/foto01.jpg);
+    background-image: url(/verstka/images/mentorpage/foto01.jpg);
     background-size: cover;
     margin-left: 1px;
   }
   .mentors .category .two {
-    background-image: url(../images/mentorpage/foto02.jpg);
+    background-image: url(/verstka/images/mentorpage/foto02.jpg);
     background-size: cover;
     margin-left: 1px;
   }
   .mentors .category .three {
-    background-image: url(../images/mentorpage/foto03.jpg);
+    background-image: url(/verstka/images/mentorpage/foto03.jpg);
     background-size: cover;
     margin-left: 1px;
   }
   .mentors .category .four {
-    background-image: url(../images/mentorpage/foto04.jpg);
+    background-image: url(/verstka/images/mentorpage/foto04.jpg);
     background-size: cover;
     margin-left: 1px;
   }
@@ -3591,7 +3591,7 @@ a.backtolisting:hover {
   -webkit-appearance: none;
   appearance: none;
   background-color: #fff;
-  background-image: url(../images/arrow-down-black.svg);
+  background-image: url(/verstka/images/arrow-down-black.svg);
   background-repeat: no-repeat, repeat;
   background-position: right .7em top 50%, 0 0;
   background-size: .65em auto, 100%;
