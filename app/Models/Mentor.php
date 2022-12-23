@@ -164,6 +164,8 @@ class Mentor extends Model {
 
         $mentors = $q->distinct()->get(["mentors.id"]);
 
+        $ids = [];
+
         foreach ($mentors as $m) {
             $ids[] = $m->id;
         }
