@@ -1,11 +1,12 @@
-
 <div class="cats-tree">
-    @foreach($catsTree as $ct)
-    <div class="parent" id = "{{ $ct["pc"]["id"] }}">{{ $ct["pc"]["name"] }}</div>
-    @foreach($ct["cs"] as $cc)
-    <div class="child" id = "{{ $cc["id"] }}">{{ $cc["name"] }}</div>
-    @endforeach
+    @foreach($catsTree["parents"] as $parent)
+    <div class="cat parent" id = "{{ $parent->id }}">{{ $parent->name }}</div>
 
+    @foreach($catsTree["cats"] as $cat)
+    @if($cat->parent_id === $parent->id)
+    <div class="cat child" id = "{{ $cat->id }}">{{ $cat->name }}</div>
+    @endif
+    @endforeach
 
     @endforeach
 </div>

@@ -91,32 +91,60 @@ class Mentor extends Model {
         return $this->hasMany(MentorSingleService::class, 'mentor_id', 'id');
     }
 
-    public static function filter(array $filters) {
-        $cat = $filters["cat"];
-        $catIds = MentorCategory::where("name", "like", "%" . $cat . "%")->get(["id", "parent_id", "name"]);
-
-        $pc = array_values(array_unique(array_column($catIds->toArray(), "parent_id")));
-        $parentCatIds = MentorCategory::whereIn('id', $pc)->get(['id', 'name']);
-
-        $t = [];
-
-        foreach ($parentCatIds as $pcc) {
-            $pca["pc"] = $pcc;
-            $cs = [];
-            foreach ($catIds as $c) {
-                if ($pcc["id"] === $c["parent_id"]) {
-                    $cs[] = $c;
-                }
-            }
-            $pca["cs"] = $cs;
-            $t[] = $pca;
-        }
-
-        return $t;
+    public function lessons() {
+        return $this->hasMany(Lesson::class, 'mentor_id', 'id');
     }
 
-    public static function getTagsByCatId($id) {
-        return CategoryTag::where(['category_id' => $id])->get(["name", "id"]);
+    public function getDefaultService() {
+        return count($this->services) ? $this->services[0] : false;
+    }
+
+    public function getActivePrice() {
+        $svc = $this->getDefaultService();
+        return $svc ? (int) ($svc->price - ($svc->price / 100 * $svc->discount)) : false;
+    }
+
+    public function getDefaultCurrency() {
+        return $this->getDefaultService()->currency;
+    }
+
+    public function getPrimaryServices() {
+        //hasManyThrough лучше
+        $q = \Illuminate\Support\Facades\DB::table('mentors')
+                ->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id')
+                ->join('mentor_services', 'mentor_services.id', 'mentor_single_services.service_id')
+                ->where(['mentor_services.type_service' => 1, "mentors.id" => $this->id]);
+        return $q->get("mentor_services.*");
+    }
+
+    public function getAdditionalServices() {
+        //hasManyThrough лучше
+        $q = \Illuminate\Support\Facades\DB::table('mentors')
+                ->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id')
+                ->join('mentor_services', 'mentor_services.id', 'mentor_single_services.service_id')
+                ->where(['mentor_services.type_service' => 2, "mentors.id" => $this->id]);
+        return $q->get("mentor_services.*");
+    }
+
+    public static function findCats($str) {
+        $catIds = MentorCategory::where("name", "like", "%" . $str . "%")->get(["id", "parent_id", "name"]);
+        $parentIds = MentorCategory::whereIn('id', $catIds->pluck('parent_id'))->get(['id', 'name']);
+
+        return (count($catIds) && count($parentIds)) ? ["cats" => $catIds, "parents" => $parentIds] : false;
+    }
+
+    public static function findTagsByStr($str) {
+        $tags = CategoryTag::where("name", "like", "%" . $str . "%")->get(["id", "category_id", "name"]);
+        $parents = MentorCategory::whereIn('id', $tags->pluck('category_id'))->get(["id", "parent_id", "name"]);
+
+        return (count($tags) && count($parents)) ? ["tags" => $tags, "parents" => $parents] : false;
+    }
+
+    public static function getTagsByCatId($ids) {
+        $tags = CategoryTag::whereIn('category_id', (array) $ids)->get(["name", "id", "category_id"]);
+        $parents = MentorCategory::whereIn('id', $tags->pluck('category_id'))->get(["id", "parent_id", "name"]);
+
+        return (count($tags) && count($parents)) ? ["tags" => $tags, "parents" => $parents] : false;
     }
 
     public static function getByForm($form) {
@@ -134,12 +162,15 @@ class Mentor extends Model {
                 $cat = $row["value"];
             }
 
-            if ($row["name"] === "for-you") {
+            if ($row["name"] == "for_you") {
                 $forYou = (bool) $row["value"];
             }
 
-            if ($row["name"] === "vip") {
+            if ($row["name"] == "vip") {
                 $vip = (bool) $row["value"];
+            }
+            if ($row["name"] === "sort") {
+                $sort = $row["value"];
             }
         }
 
@@ -158,21 +189,45 @@ class Mentor extends Model {
             $q->where('mentor_single_categories.category_id', "=", $cat);
         }
 
+        if ($forYou) {
+            //TODO: join single service and mentor service
+            //$q->where('mentors.vip_status', '=', 1);
+        }
+
         if ($vip) {
             $q->where('mentors.vip_status', '=', 1);
         }
 
-        $mentors = $q->distinct()->get(["mentors.id"]);
+        $q->where("mentors.is_active", "=", 1);
 
-        $ids = [];
+        self::sort($q, $sort);
 
-        foreach ($mentors as $m) {
-            $ids[] = $m->id;
+        $mentorIds = $q->distinct()->get(["mentors.id"]);
+
+        return $mentorIds;
+    }
+
+    public static function sort(&$q, $type) {
+
+        switch ($type) {
+            case "lessons":
+                //$q->join('lessons', 'mentors.id', 'lessons.mentor_id');
+                //$q->orderBy('mentor_single_services.price', 'asc');
+                break;
+            case "price_asc":
+                $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
+                $q->orderBy('mentor_single_services.price', 'asc');
+                break;
+            case "price_desc":
+                $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
+                $q->orderBy('mentor_single_services.price', 'desc');
+                break;
+            default:
+                $q->orderBy('mentors.id', 'asc');
+                break;
         }
 
-        $data = self::findMany($ids);
-
-        return $data;
+        return $q;
     }
 
 }
