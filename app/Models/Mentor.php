@@ -108,6 +108,15 @@ class Mentor extends Model {
         return $this->getDefaultService()->currency;
     }
 
+    public function getPrimaryServices() {
+        //hasManyThrough лучше
+        $q = \Illuminate\Support\Facades\DB::table('mentors')
+                ->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id')
+                ->join('mentor_services', 'mentor_services.id', 'mentor_single_services.service_id')
+                ->where(['mentor_services.type_service' => 1, "mentors.id" => $this->id]);
+        return $q->get("mentor_services.*");
+    }
+
     public function getAdditionalServices() {
         //hasManyThrough лучше
         $q = \Illuminate\Support\Facades\DB::table('mentors')
@@ -200,17 +209,17 @@ class Mentor extends Model {
 
     public static function sort(&$q, $type) {
 
-        $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
-
         switch ($type) {
             case "lessons":
                 //$q->join('lessons', 'mentors.id', 'lessons.mentor_id');
                 //$q->orderBy('mentor_single_services.price', 'asc');
                 break;
             case "price_asc":
+                $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
                 $q->orderBy('mentor_single_services.price', 'asc');
                 break;
             case "price_desc":
+                $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
                 $q->orderBy('mentor_single_services.price', 'desc');
                 break;
             default:

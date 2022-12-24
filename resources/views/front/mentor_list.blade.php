@@ -13,7 +13,7 @@
                         <input id="searchKey" name="searchInput" class="def search" placeholder="Какой нужен специалист?">
                         <div class="search-hint"></div>
                         <div class="right">
-                            <a href="javascript:void(0);" class="resetFilters kill">Сбросить <img src="/verstka/images/close_white.svg"></a></div>
+                            <a href="#" class="resetFilters kill">Сбросить <img src="/verstka/images/close_white.svg"></a></div>
                     </div>
                     <div class="col-xs-6 col-md-4 col-lg-2"  style="border:0px solid red">
                         <button class="def search">Подобрать</button>
@@ -85,10 +85,10 @@
                 },
                 success: (data) => {
                     console.log(data);
-
                     $('.search-hint').fadeIn(200, function () {
                         $('.search-hint').append(data);
                     });
+                    sendForm();
 
                 },
                 error: (err) => {
@@ -162,6 +162,7 @@
                     $('label.tag[data-id="' + active_id + '"]').find('[type="checkbox"]').attr('checked', true);
                     $('label.tag[data-id="' + active_id + '"]').addClass('checked');
                     $('.tags_block').fadeIn(200);
+                    sendForm();
                 },
                 error: (err) => {
                     console.log(err);
@@ -193,8 +194,7 @@
 
 
 
-        $('body').on('click', 'button.def.search', function (e) {
-            e.preventDefault(e);
+        function sendForm() {
             let form = $('#mentorSearch');
 
             let data = $(form).serializeArray();
@@ -209,11 +209,12 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
+
                     $('.listing_block').fadeOut(200);
                     $('.listing_block').html("");
                 },
                 success: (data) => {
-                    console.log(data);
+                    //console.log(data);
                     $('.listing_block').fadeIn(200);
                     $('.listing_block').append(data);
                 },
@@ -222,18 +223,38 @@
                 }
 
             });
+        }
+
+
+
+        $('body').on('click', 'button.def.search', function (e) {
+            e.preventDefault(e);
+            sendForm();
 
         });
 
 
 
+        $('body').on("change", '#mentorSearch :input:not(#searchKey)', function (e) {
+            e.preventDefault(e);
+            sendForm();
+        });
 
-        $('.kill').click(function () {
-            $('#mentorSearch').find('input').each(function (idx, el) {
-                $(el).val("");
-            });
+
+
+        function clearForm() {
+            $('#mentorSearch :input').val("");
             $('.tags_block').html("");
-        })
+            $('#mentorSearch label').removeClass("checked");
+            $('#mentorSearch :input[type=checkbox]').prop("checked", false);
+
+        }
+
+        $('.kill').click(function (e) {
+            e.preventDefault(e);
+            clearForm();
+            $('.sort').trigger('change');
+        });
 
 
 
@@ -241,6 +262,7 @@
 
         $('body').on('change', '.sortList', function () {
             $('#mentorSearch').find('.sort').val($(this).val());
+            $('#mentorSearch').find('.sort').trigger('change');
         });
 
 

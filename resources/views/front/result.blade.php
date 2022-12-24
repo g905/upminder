@@ -5,7 +5,7 @@
 @else
 <div class="col-lg-12 ">
     <div class="listing_block">
-        <div class="result">Подобрали для вас <span id="count">{{ $count ?? 0 }}</span> {{ trans_choice('наставника|наставников|наставников', $count) }}</div>
+        <div class="result">Подобрали для вас <span id="count">{{ count($mentors) ?? 0 }}</span> {{ trans_choice('наставника|наставников|наставников', count($mentors)) }}</div>
         <div class="sort">
             <select class="sortList form-select form-select-lg mb-3 select-css" aria-label=".form-select-lg example">
                 <option value="id">По умолчанию</option>
