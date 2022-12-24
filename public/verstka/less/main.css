@@ -44,11 +44,11 @@ h4 {
 }
 .nav-item a.active {
   border-radius: 7px;
-  color: #37e45e !important;
+  color: #37E45E !important;
   background-color: transparent;
 }
 .nav-item a:hover {
-  background-color: #37e45e;
+  background-color: #37E45E;
   border-radius: 7px;
   color: #ffffff;
 }
@@ -95,7 +95,7 @@ h4 {
   }
 }
 .white_back {
-  background-color: #ecedf1;
+  background-color: #ECEDF1;
   border-radius: 0px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -112,20 +112,20 @@ h4 {
 }
 .top_menu li a:hover {
   text-decoration: underline;
-  color: #37e45e;
+  color: #37E45E;
 }
 .top_menu li a.active {
-  color: #37e45e;
+  color: #37E45E;
 }
 body {
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
   font-size: 13pt;
   width: 100%;
   overflow: visible;
 }
 .search_block h1 {
   font-size: 5rem;
-  color: #37e45e;
+  color: #37E45E;
   margin-top: 30px;
 }
 @media screen and (max-width: 600px) {
@@ -161,30 +161,30 @@ input.search {
 }
 button.def {
   padding: 18px;
-  background-color: #37e45e;
+  background-color: #37E45E;
   border: 0px;
   border-radius: 16px;
   color: #292522 !important;
   text-align: center;
 }
 button.def:hover {
-  background-color: #57ff7c;
+  background-color: #57FF7C;
 }
 button.def2 {
   padding: 18px;
   padding-left: 32px;
   padding-right: 32px;
-  background-color: #37e45e;
+  background-color: #37E45E;
   border: 0px;
   border-radius: 16px;
   color: #292522;
   text-align: center;
 }
 button.def2:hover {
-  background-color: #57ff7c;
+  background-color: #57FF7C;
 }
 button.def3 {
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
   background-color: #ffffff;
   color: #292522;
   padding: 13px;
@@ -193,28 +193,28 @@ button.def3 {
   border-radius: 16px;
 }
 button.def3:hover {
-  background-color: #57ff7c;
-  border: 1px solid #57ff7c;
+  background-color: #57FF7C;
+  border: 1px solid #57FF7C;
   color: #292522;
 }
 .form-check-input[type=checkbox] {
   font-size: 17pt;
 }
 .form-check-input:focus {
-  border-color: #37e45e;
+  border-color: #37E45E;
   outline: 0;
-  box-shadow: 0 0 0 0.1rem #37e45e;
+  box-shadow: 0 0 0 0.1rem #37E45E;
 }
 .form-check-input:checked {
-  background-color: #37e45e !important;
-  border-color: #37e45e;
+  background-color: #37E45E !important;
+  border-color: #37E45E;
 }
 input.search {
   width: 100%;
   border: 1px solid #ffffff;
 }
 input.search:hover {
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
 }
 input.search_index {
   border: 1px solid #ECEDF1;
@@ -242,7 +242,7 @@ button.search {
   color: #292522;
 }
 button.search:hover {
-  background-color: #57ff7c;
+  background-color: #57FF7C;
   transition: 0.5s;
 }
 .checkbox_block {
@@ -274,10 +274,10 @@ button.search:hover {
   margin-top: 10px;
 }
 .listing_block {
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
 }
 .cart_block .tag {
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
   font-size: 13pt;
 }
 .cart_block {
@@ -296,7 +296,7 @@ button.search:hover {
 }
 .cart_block h3 a:hover {
   text-decoration: none;
-  color: #37e45e;
+  color: #37E45E;
 }
 .cart_block .spectag {
   white-space: nowrap;
@@ -310,7 +310,7 @@ button.search:hover {
   .cart_block .static_price_block {
     text-align: center;
     margin-top: 20px;
-    border: 0px solid #ecedf1;
+    border: 0px solid #ECEDF1;
   }
   .cart_block .btn_block {
     margin-top: 50px;
@@ -396,7 +396,7 @@ button.search:hover {
   margin-right: 5px;
 }
 .old_price {
-  color: #37e45e;
+  color: #37E45E;
   font-size: 13px;
   text-decoration: line-through;
   margin-left: 5px;
@@ -405,15 +405,15 @@ button.search:hover {
 .old_price .rub {
   line-height: 4px;
   width: 0.4em;
-  border-bottom: 1px solid #37e45e;
+  border-bottom: 1px solid #37E45E;
   display: inline-block;
   margin-right: 0px;
 }
 .sale {
-  color: #37e45e;
+  color: #37E45E;
 }
 .enter {
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
   padding: 18px;
   width: 100%;
   border-radius: 16px;
@@ -426,11 +426,11 @@ button.search:hover {
 }
 .enter:hover {
   transition: 0.5s;
-  color: #37e45e;
+  color: #37E45E;
   font-size: 16px;
 }
 .request {
-  background-color: #37e45e;
+  background-color: #37E45E;
   margin-bottom: 10px;
   padding: 18px;
   width: 100%;
@@ -442,7 +442,7 @@ button.search:hover {
   font-size: 16px;
 }
 .request:hover {
-  background-color: #57ff7c;
+  background-color: #57FF7C;
   transition: 0.5s;
   color: #292522;
 }
@@ -458,7 +458,7 @@ button.search:hover {
 }
 .cart_block .company:hover {
   color: #292522;
-  background-color: #37e45e;
+  background-color: #37E45E;
   text-decoration: none;
 }
 .bottom_menu p {
@@ -576,7 +576,7 @@ button.form:hover {
   text-decoration: none;
 }
 .bottom_menu a:hover {
-  color: #37e45e;
+  color: #37E45E;
   transition: 0.5s;
   display: block;
   text-decoration: none;
@@ -615,8 +615,8 @@ button.form:hover {
   transition: 0.5s;
 }
 .support:hover {
-  border: 2px solid #37e45e;
-  color: #37e45e;
+  border: 2px solid #37E45E;
+  color: #37E45E;
   transition: 0.5s;
 }
 .bottom_link p {
@@ -714,7 +714,7 @@ a.filter_collapse {
     text-align: center;
   }
   .float_price_block .enter {
-    border: 1px solid #37e45e;
+    border: 1px solid #37E45E;
     background-color: #ffffff;
     padding: 18px;
     width: 100%;
@@ -737,7 +737,7 @@ a.filter_collapse {
     border-bottom: 2px solid #ffffff;
   }
   .float_price_block .old_price .rub {
-    border-bottom: 2px solid #37e45e;
+    border-bottom: 2px solid #37E45E;
   }
 }
 .static_price_block {
@@ -771,7 +771,7 @@ a.filter_collapse {
 }
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-  border-bottom: 3px solid #37e45e;
+  border-bottom: 3px solid #37E45E;
 }
 .mentor_tabs {
   border-bottom: #535353;
@@ -784,7 +784,7 @@ a.filter_collapse {
   padding: 20px;
   padding-left: 80px;
   padding-right: 80px;
-  background-color: #ecedf1;
+  background-color: #ECEDF1;
 }
 .cart_white_block h2 {
   margin-top: 140px;
@@ -829,7 +829,6 @@ a.filter_collapse {
 @media screen and (max-width: 600px) {
   padding-left: 20px;
   padding-right: 20px;
-  
   .cart_white_block h2 {
     margin-top: 72px;
     margin-bottom: 40px;
@@ -844,7 +843,7 @@ a.filter_collapse {
 }
 .nav-link:hover {
   background-color: transparent !important;
-  color: #37e45e !important;
+  color: #37E45E !important;
 }
 @media screen and (max-width: 600px) {
   .cart_white_block {
@@ -906,7 +905,7 @@ a.filter_collapse {
   cursor: pointer;
 }
 .dark_block_head .tag:hover {
-  background-color: #37e45e;
+  background-color: #37E45E;
   transition: 0.5s;
   color: #ffffff;
 }
@@ -1038,7 +1037,7 @@ a.kill img {
 }
 .accordion-button:not(.collapsed) {
   background-color: transparent !important;
-  color: #37e45e !important;
+  color: #37E45E !important;
   padding: 0px;
   padding-bottom: 16px;
   padding-left: 0px;
@@ -1095,7 +1094,7 @@ a.kill img {
   line-height: 43px;
 }
 a.backtolisting:hover {
-  color: #37e45e;
+  color: #37E45E;
 }
 .backtolisting img {
   margin-right: 10px;
@@ -1104,7 +1103,7 @@ a.backtolisting:hover {
   margin-top: 0px;
 }
 .dark_mentor_block h1 {
-  color: #37e45e;
+  color: #37E45E;
 }
 .cart_min_block h1 {
   font-size: 3rem;
@@ -1124,7 +1123,7 @@ a.backtolisting:hover {
 }
 .mentorday {
   padding: 5px;
-  background-color: #37e45e;
+  background-color: #37E45E;
   color: #292522;
   border-radius: 9px;
   margin-top: -30px;
@@ -1160,7 +1159,7 @@ a.backtolisting:hover {
 }
 .cart_min_block .company:hover {
   color: #292522;
-  background-color: #37e45e;
+  background-color: #37E45E;
 }
 .cart_min_block .feature {
   margin-top: 40px;
@@ -1171,11 +1170,11 @@ a.backtolisting:hover {
   margin-top: 10px;
 }
 .cart_min_block .company_desc {
-  color: #ecedf1;
+  color: #ECEDF1;
   font-size: 13pt;
 }
 .cart_min_block .img-fluid {
-  border: 3px solid #37e45e;
+  border: 3px solid #37E45E;
   border-radius: 11px;
 }
 .cart_min_block .tag_block {
@@ -1259,7 +1258,7 @@ a.backtolisting:hover {
   margin-top: 20px;
 }
 .white_block_index .green {
-  color: #37e45e;
+  color: #37E45E;
   font-family: "neue";
 }
 .left_block {
@@ -1334,7 +1333,7 @@ a.backtolisting:hover {
   margin-top: 20px;
 }
 .tag {
-  background-color: #f8f8f8;
+  background-color: #F8F8F8;
   border-radius: 11px;
   display: inline-block;
   color: #292522;
@@ -1433,7 +1432,7 @@ a.backtolisting:hover {
   font-family: "neue";
 }
 .polezno_block .def {
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
   background-color: #ffffff;
   padding: 20px;
   padding-left: 40px;
@@ -1445,8 +1444,8 @@ a.backtolisting:hover {
 }
 .polezno_block .one:hover .def,
 .polezno_block .two:hover .def {
-  border: 1px solid #37e45e;
-  background-color: #37e45e;
+  border: 1px solid #37E45E;
+  background-color: #37E45E;
 }
 .polezno_block .one,
 .polezno_block .two {
@@ -1463,8 +1462,8 @@ a.backtolisting:hover {
 }
 .polezno_block .one .def:hover,
 .polezno_block .two .def:hover {
-  border: 1px solid #57ff7c;
-  background-color: #57ff7c;
+  border: 1px solid #57FF7C;
+  background-color: #57FF7C;
 }
 .polezno_block .one:hover,
 .polezno_block .two:hover {
@@ -1527,8 +1526,8 @@ a.backtolisting:hover {
   }
   .polezno_block .one .def:hover,
   .polezno_block .two .def:hover {
-    border: 1px solid #57ff7c;
-    background-color: #57ff7c;
+    border: 1px solid #57FF7C;
+    background-color: #57FF7C;
   }
   .polezno_block .one {
     background-image: url(/verstka/images/index/foto1_m.jpg);
@@ -1573,7 +1572,7 @@ a.backtolisting:hover {
   .polezno_block p {
     font-size: 1.4rem;
     min-height: inherit;
-    border: 0px solid #ff0000;
+    border: 0px solid red;
   }
   .polezno_block div h3 {
     min-height: auto;
@@ -1595,8 +1594,8 @@ a.backtolisting:hover {
     color: #ffffff;
   }
   .polezno_block .def {
-    border: 1px solid #37e45e;
-    background-color: #37e45e;
+    border: 1px solid #37E45E;
+    background-color: #37E45E;
     color: #ffffff;
     padding: 20px;
     padding-left: 40px;
@@ -1619,8 +1618,8 @@ a.backtolisting:hover {
   }
   .polezno_block .one .def:hover,
   .polezno_block .two .def:hover {
-    border: 1px solid #57ff7c;
-    background-color: #57ff7c;
+    border: 1px solid #57FF7C;
+    background-color: #57FF7C;
   }
   .polezno_block .one {
     background-image: url(/verstka/images/index/foto1_m.jpg);
@@ -1663,7 +1662,7 @@ a.backtolisting:hover {
   min-height: 70px;
 }
 .zadachi_block .def {
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
   background-color: #ffffff;
   padding: 20px;
   padding-left: 40px;
@@ -1676,8 +1675,8 @@ a.backtolisting:hover {
 .zadachi_block .one:hover .def,
 .zadachi_block .two:hover .def,
 .zadachi_block .three:hover .def {
-  border: 1px solid #37e45e;
-  background-color: #37e45e;
+  border: 1px solid #37E45E;
+  background-color: #37E45E;
 }
 .zadachi_block .one,
 .zadachi_block .two,
@@ -1702,8 +1701,8 @@ a.backtolisting:hover {
 .zadachi_block .one .def:hover,
 .zadachi_block .two .def:hover,
 .zadachi_block .three .def:hover {
-  border: 1px solid #57ff7c;
-  background-color: #57ff7c;
+  border: 1px solid #57FF7C;
+  background-color: #57FF7C;
 }
 .zadachi_block .one:hover,
 .zadachi_block .two:hover,
@@ -1796,12 +1795,12 @@ a.backtolisting:hover {
     background-size: cover;
   }
   .zadachi_block .def {
-    border: 1px solid #37e45e;
-    background-color: #37e45e;
+    border: 1px solid #37E45E;
+    background-color: #37E45E;
   }
   .zadachi_block .def:hover {
-    border: 1px solid #57ff7c;
-    background-color: #57ff7c;
+    border: 1px solid #57FF7C;
+    background-color: #57FF7C;
   }
 }
 @media screen and (max-width: 600px) {
@@ -1829,8 +1828,8 @@ a.backtolisting:hover {
     color: #ffffff;
   }
   .zadachi_block .def {
-    border: 1px solid #37e45e;
-    background-color: #37e45e;
+    border: 1px solid #37E45E;
+    background-color: #37E45E;
     color: #ffffff;
     padding: 20px;
     padding-left: 40px;
@@ -1856,8 +1855,8 @@ a.backtolisting:hover {
     margin-left: 1px;
   }
   .zadachi_block .def:hover {
-    border: 1px solid #57ff7c;
-    background-color: #57ff7c;
+    border: 1px solid #57FF7C;
+    background-color: #57FF7C;
   }
   .zadachi_block .one {
     background-image: url(/verstka/images/index/foto4_m.jpg);
@@ -2153,7 +2152,7 @@ a.backtolisting:hover {
 .zadachi .cart1 {
   position: absolute;
   z-index: 1;
-  background-color: #37e45e;
+  background-color: #37E45E;
   padding: 20px;
   color: #292522;
   border-radius: 16px;
@@ -2201,12 +2200,12 @@ a.backtolisting:hover {
 }
 .zadachi .cart2 .def {
   color: #292522;
-  background-color: #37e45e;
+  background-color: #37E45E;
   margin-top: 20px;
 }
 .zadachi .cart2 .def:hover {
   color: #292522;
-  background-color: #57ff7c;
+  background-color: #57FF7C;
 }
 .zadachi .cart3 {
   position: absolute;
@@ -2263,7 +2262,7 @@ a.backtolisting:hover {
   }
 }
 .digital {
-  color: #37e45e;
+  color: #37E45E;
   font-size: 0.8rem;
   margin: 0px;
   margin-bottom: 10px;
@@ -2312,7 +2311,7 @@ a.backtolisting:hover {
   position: relative;
 }
 .dark_block_index .faq .more:hover {
-  color: #37e45e;
+  color: #37E45E;
 }
 .dark_block_index .faq .more span {
   background: url(/verstka/images/arrow-right-white.svg);
@@ -2481,7 +2480,7 @@ a.backtolisting:hover {
   margin-bottom: 8px;
 }
 .about .about_block2 .digital {
-  color: #37e45e;
+  color: #37E45E;
   font-size: 0.8rem;
   margin: 0px;
   margin-bottom: 10px;
@@ -2567,7 +2566,7 @@ a.backtolisting:hover {
 .about .dark_block li {
   line-height: normal;
   margin-bottom: 10px;
-  color: #37e45e;
+  color: #37E45E;
   /* Цвет маркеров */
   padding-left: 10px;
 }
@@ -2612,8 +2611,8 @@ a.backtolisting:hover {
   }
   .about .polezno_block .one .def,
   .about .polezno_block .two .def {
-    border: 1px solid #37e45e;
-    background-color: #37e45e;
+    border: 1px solid #37E45E;
+    background-color: #37E45E;
   }
   .about .polezno_block .one {
     background-image: url(/verstka/images/index/foto1_m.jpg);
@@ -2704,7 +2703,7 @@ a.backtolisting:hover {
     margin-bottom: 8px;
   }
   .about .about_block4 .digital {
-    color: #37e45e;
+    color: #37E45E;
     font-size: 0.8rem;
     margin: 0px;
     margin-bottom: 10px;
@@ -2739,7 +2738,7 @@ a.backtolisting:hover {
   .about .dark_block li {
     line-height: normal;
     margin-bottom: 10px;
-    color: #37e45e;
+    color: #37E45E;
     /* Цвет маркеров */
     padding-left: 10px;
   }
@@ -2860,7 +2859,7 @@ a.backtolisting:hover {
   position: relative;
 }
 .mentors .category .def {
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
   background-color: #ffffff;
   padding: 20px;
   padding-left: 40px;
@@ -2881,7 +2880,7 @@ a.backtolisting:hover {
   margin-bottom: 30px;
 }
 .mentors .category li {
-  color: #37e45e;
+  color: #37E45E;
 }
 .mentors .category div:hover h3 {
   color: #ffffff;
@@ -2913,8 +2912,8 @@ a.backtolisting:hover {
 .mentors .category .def:hover {
   position: absolute;
   bottom: 35px;
-  border: 1px solid #57ff7c;
-  background-color: #57ff7c;
+  border: 1px solid #57FF7C;
+  background-color: #57FF7C;
 }
 .mentors .podrobnee_block {
   margin-top: 140px;
@@ -2993,7 +2992,7 @@ a.backtolisting:hover {
 .mentors .mentor_block4 .green {
   border-radius: 16px;
   padding: 40px;
-  background-color: #37e45e;
+  background-color: #37E45E;
   -webkit-transition: -webkit-transform 0.6s ease-out;
   transition: -webkit-transform 0.6s ease-out;
   -o-transition: transform 0.6s ease-out;
@@ -3131,11 +3130,11 @@ a.backtolisting:hover {
     margin-left: 1px;
   }
   .mentors .def {
-    background-color: #37e45e !important;
+    background-color: #37E45E !important;
     border: 0px !important;
   }
   .mentors .def:hover {
-    background-color: #57ff7c !important;
+    background-color: #57FF7C !important;
     border: 0px !important;
   }
   .mentors .cart_faq_block {
@@ -3210,7 +3209,7 @@ a.backtolisting:hover {
   .mentors .mentor_block4 .green {
     border-radius: 16px;
     padding: 40px;
-    background-color: #37e45e;
+    background-color: #37E45E;
     margin-bottom: 8px;
     height: auto;
   }
@@ -3303,7 +3302,7 @@ a.backtolisting:hover {
   -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.75);
-  border: 1px solid #37e45e;
+  border: 1px solid #37E45E;
 }
 .modal-footer {
   justify-content: flex-start;
@@ -3461,7 +3460,7 @@ a.backtolisting:hover {
   .mentors .mentor_block4 .green {
     border-radius: 16px;
     padding: 40px;
-    background-color: #37e45e;
+    background-color: #37E45E;
     margin-bottom: 16px;
     height: auto;
   }
@@ -3546,7 +3545,7 @@ a.backtolisting:hover {
   width: 0;
 }
 .questions {
-  font-size: calc(1.25rem);
+  font-size: calc(0.25rem + 1vw);
   -webkit-transition: -webkit-transform 1s ease-out;
   transition: -webkit-transform 1s ease-out;
   -o-transition: transform 1s ease-out;
@@ -3556,7 +3555,7 @@ a.backtolisting:hover {
 }
 @media screen and (max-width: 530px) {
   .questions {
-    font-size: calc(1.15rem);
+    font-size: calc(0.15rem + 1vw);
   }
 }
 .img-fluid {
@@ -3583,7 +3582,7 @@ a.backtolisting:hover {
   font-weight: 700;
   color: #444;
   line-height: 1.3;
-  padding: .6em 1.4em .5em .8em;
+  padding: 0.6em 1.4em 0.5em 0.8em;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -3597,8 +3596,8 @@ a.backtolisting:hover {
   background-color: #fff;
   background-image: url(/verstka/images/arrow-down-black.svg);
   background-repeat: no-repeat, repeat;
-  background-position: right .7em top 50%, 0 0;
-  background-size: .65em auto, 100%;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
 }
 .select-css::-ms-expand {
   display: none;
@@ -3618,8 +3617,8 @@ a.backtolisting:hover {
 *[dir="rtl"] .select-css,
 :root:lang(ar) .select-css,
 :root:lang(iw) .select-css {
-  background-position: left .7em top 50%, 0 0;
-  padding: .6em .8em .5em 1.4em;
+  background-position: left 0.7em top 50%, 0 0;
+  padding: 0.6em 0.8em 0.5em 1.4em;
 }
 @media screen and (max-width: 600px) {
   .index_block h2 {
