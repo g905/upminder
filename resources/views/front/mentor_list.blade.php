@@ -86,11 +86,9 @@
                 success: (data) => {
                     console.log(data);
 
-                    if (data) {
-                        $('.search-hint').fadeIn(200, function () {
-                            $('.search-hint').append(data);
-                        });
-                    }
+                    $('.search-hint').fadeIn(200, function () {
+                        $('.search-hint').append(data);
+                    });
 
                 },
                 error: (err) => {
@@ -122,7 +120,7 @@
         });
 
         $(input).focus(function (e) {
-            $(input).val("");
+            //$(input).val("");
             //if ($(this).val().trim() === "") {
             //  $('.search-hint').html("");
             // return false;
@@ -211,10 +209,12 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
+                    $('.listing_block').fadeOut(200);
                     $('.listing_block').html("");
                 },
                 success: (data) => {
                     console.log(data);
+                    $('.listing_block').fadeIn(200);
                     $('.listing_block').append(data);
                 },
                 error: (err) => {
