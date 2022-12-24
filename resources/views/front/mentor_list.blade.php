@@ -54,6 +54,10 @@
     $(document).ready(() => {
 
 
+        $('body').on('click', '.form-check-input', function () {
+            $(this).val($(this).prop("checked") ? "1" : "0");
+        });
+
         $('body').on('click', '.tag input[type="checkbox"]', function () {
             $(this).parent().toggleClass('checked');
         });
@@ -91,13 +95,16 @@
             });
         };
 
-        /**debounce - это ограничение частоты запросов, чтобы не каждую миллисекунду отправлялись, а с задержкой**/
+        /**
+         * Поиск по вводу
+         * debounce - это ограничение частоты запросов, чтобы не каждую миллисекунду отправлялись, а с задержкой**/
         $(input).keyup($.debounce(550, function (e) {
             if ($(this).val().trim() === "") {
                 $('.search-hint').html("");
                 return false;
             }
             let toSend = {
+                type: "cats",
                 val: $(this).val()
             };
             searchCats(toSend);
@@ -125,7 +132,7 @@
 
         /********************* SEARCH TAGS BY CAT ID ************************/
 
-        const searchTagsByCatId = (id) => {
+        const searchTagsByCatId = (id, active_id = null) => {
             console.log(id);
             $.ajax({
                 headers: headers,
@@ -146,6 +153,8 @@
                 success: (data) => {
                     console.log(data);
                     $('.tags_block').append(data);
+                    $('label.tag[data-id="' + active_id + '"]').find('[type="checkbox"]').attr('checked', true);
+                    $('label.tag[data-id="' + active_id + '"]').addClass('checked');
                     $('.tags_block').fadeIn(200);
                 },
                 error: (err) => {
@@ -159,11 +168,20 @@
 
 
 
-        $('body').on('click', '.child', function (e) {
+        $('body').on('click', '.cat.child', function (e) {
             //console.log($(this).attr("id"));
             $(input).val($(this).text());
-            $('.cat').val($(this).attr("id"));
+            $('input.cat').val($(this).attr("id"));
             searchTagsByCatId($(this).attr("id"));
+        });
+
+
+
+        $('body').on('click', '.tagSearch.child', function (e) {
+            $(input).val(/*$(this).prev().text() + " / " + */$(this).text());
+            let parent_id = $(this).prev().attr("id");
+            $('input.cat').val(parent_id);
+            searchTagsByCatId(parent_id, $(this).attr("id"));
         });
 
 
@@ -223,14 +241,18 @@
 
 
 <style>
+    #searchKey {
+        color: #666;
+    }
     .search-hint {
         position: absolute;
         top: 70px;
         background: #fff;
         color: #666;
-        display: none;
+        display: block;
         border-radius: 5px;
         padding: 1rem 0;
+        z-index: 999;
     }
     .parent {
         color: #aaa;

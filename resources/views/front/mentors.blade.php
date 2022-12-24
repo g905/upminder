@@ -1,4 +1,3 @@
-{{ json_encode($mentor->getDefaultService()) }}
 <div class="cart_block">
     <div class="row">
         <div class="col-lg-2 col-md-3  d-none d-md-block">
@@ -18,22 +17,22 @@
                 <a href="cart.html">{{ $mentor->first_name }} {{ $mentor->last_name }}</a>
                 @if($mentor->verified)
                 <span class='verified'>
-                    <img src='{{ asset("assets/img/verify.svg") }}' alt="verify-icon">
+                    <img src='{{ asset("assets/images/cart_icon/verify.svg") }}' alt="verify-icon">
                 </span>
                 @endif
             </h3>
             <div class="prof">Ведущий программист в <a href="#" class="company">Beeline</a></div>
-            <span class="address"><img src="/verstka/images/geo.svg"> Moscow, Russia (+03:00 UTC)</span>
-            <span class="language"><img src="/verstka/images/lang.svg"> Русский, English</span>
+            <span class="address"><img src="{{ asset('assets/images/geo.svg') }}"> Moscow, Russia (+03:00 UTC)</span>
+            <span class="language"><img src="{{ asset('assets/images/lang.svg') }}"> Русский, English</span>
             <div class="desc d-none d-md-block">{{ $mentor->description }}</div>
             <div class="clearfix"></div>
             <div class="tag_block">
                 <!-- специальные теги  -->
                 @if(count($mentor->getAdditionalServices()))
-                <a href="#" class="tag spectag">Ментор сделает за вас&nbsp;<img src="/verstka/images/force.svg"></a>
+                <a href="#" class="tag spectag">Ментор сделает за вас&nbsp;<img src="{{ asset('assets/images/force.svg') }}"></a>
                 @endif
                 @if($mentor->vip_status)
-                <a href=# class="tag spectag">VIP-ментор&nbsp;<img src="/verstka/images/smile.svg"></a>
+                <a href=# class="tag spectag">VIP-ментор&nbsp;<img src="{{ asset('assets/images/smile.svg') }}"></a>
                 @endif
                 <!-- конец блока -->
                 @foreach($mentor->tags as $tag)

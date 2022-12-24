@@ -859,10 +859,20 @@ class FrontMentorController extends Controller {
             $html = view('front.result', ['mentors' => $mentors, "count" => count($mentors)]);
             return $html->render();
         }
-        $filters["cat"] = $request->get("val");
-        $mentors = Mentor::filter($filters);
-        $catHtml = view('front.cats', ['catsTree' => $mentors]);
-        return $catHtml->render();
+
+        if ($request->get("type") === "cats") {
+            $searchStr = $request->get("val");
+            $cats = Mentor::findCats($searchStr);
+
+            if ($cats) {
+                $catHtml = view('front.cats', ['catsTree' => $cats]);
+                return $catHtml->render();
+            }
+
+            $tags = Mentor::findTagsByStr($searchStr);
+            $tagsHtml = view('front.tagHints', ['tagsTree' => $tags]);
+            return $tagsHtml->render();
+        }
     }
 
 }

@@ -17,7 +17,7 @@
         <div class="clearfix"></div>
         <div class="mentors_list">
             @foreach($mentors as $mentor)
-            @include('front.mentors', ['mentor' => $mentor])
+            @include('front.mentors', ['mentor' => App\Models\Mentor::find($mentor->id)])
             @endforeach
         </div>
 
