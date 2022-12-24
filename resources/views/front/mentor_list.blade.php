@@ -120,7 +120,7 @@
         });
 
         $(input).focus(function (e) {
-            //$(input).val("");
+            $(input).val("");
             //if ($(this).val().trim() === "") {
             //  $('.search-hint').html("");
             // return false;
