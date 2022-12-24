@@ -78,6 +78,7 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
+                    $('.listing_block').fadeOut(200);
                     $('.search-hint').fadeOut(200, function () {
                         $('.search-hint').html("");
                     });
@@ -85,19 +86,25 @@
                 success: (data) => {
                     console.log(data);
 
-                    $('.search-hint').fadeIn(200, function () {
-                        $('.search-hint').append(data);
-                    });
+                    if (data) {
+                        $('.search-hint').fadeIn(200, function () {
+                            $('.search-hint').append(data);
+                        });
+                    }
+
                 },
                 error: (err) => {
                     console.log(err);
+                    if (err.status === 404) {
+                        $('.listing_block').html(JSON.parse(err.responseText).html);
+                        $('.listing_block').fadeIn(200);
+                    }
                 }
             });
         };
 
         /**
-         * Поиск по вводу
-         * debounce - это ограничение частоты запросов, чтобы не каждую миллисекунду отправлялись, а с задержкой**/
+         * Поиск по вводу */
         $(input).keyup($.debounce(550, function (e) {
             if ($(this).val().trim() === "") {
                 $('.search-hint').html("");
@@ -115,14 +122,15 @@
         });
 
         $(input).focus(function (e) {
-            if ($(this).val().trim() === "") {
-                $('.search-hint').html("");
-                return false;
-            }
-            let toSend = {
-                val: $(this).val()
-            };
-            searchCats(toSend);
+            $(input).val("");
+            //if ($(this).val().trim() === "") {
+            //  $('.search-hint').html("");
+            // return false;
+            //}
+            //let toSend = {
+            //    val: $(this).val()
+            //};
+            //searchCats(toSend);
         });
 
 

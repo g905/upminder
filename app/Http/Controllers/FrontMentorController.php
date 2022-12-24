@@ -864,15 +864,22 @@ class FrontMentorController extends Controller {
             $searchStr = $request->get("val");
             $cats = Mentor::findCats($searchStr);
 
+            //если найдены категории, показываем их
             if ($cats) {
                 $catHtml = view('front.cats', ['catsTree' => $cats]);
                 return $catHtml->render();
             }
 
+            //если не найдены категории, то ищем теги, показываем
             $tags = Mentor::findTagsByStr($searchStr);
-            $tagsHtml = view('front.tagHints', ['tagsTree' => $tags]);
-            return $tagsHtml->render();
+            if ($tags) {
+                $tagsHtml = view('front.tagHints', ['tagsTree' => $tags]);
+                return $tagsHtml->render();
+            }
+            //ваще ниче не найдено, выдаем 404 ошибку
+            return \Illuminate\Support\Facades\Response::json(['html' => view('front.empty')->render()], 404);
         }
+        return false;
     }
 
 }
