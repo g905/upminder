@@ -26,7 +26,7 @@
                 <button class="def search" style="position: absolute; z-index: 2; margin: 0px; right:5px; top:6px; bottom:6px; padding: 0px; width: 41px; height: 41px; border-radius:10px "><img src="/verstka/images/search.svg"></button>
                 <div class="right"><a href="{{ route('front.mentors') }}" class="kill">Сбросить <img src="/verstka/images/close_white.svg"></a></div>
             </div>
-            <h2 class="hc">С чем нужно помочь?</h2>
+
             <div class="tags_block"></div>
             <div class="checkbox_block">
                 <span><input class="form-check-input updateForm" type="checkbox" value="1" name="for_you" id="isForYou">
