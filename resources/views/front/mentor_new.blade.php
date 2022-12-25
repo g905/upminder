@@ -44,7 +44,7 @@
                     </div>
                     <div class=feature>
                         <div class="d-none d-lg-block"> <img src="{{ asset('assets/images/cart_icon/rocket.svg') }}"> Опыт {{ $mentor->experience }} </div>
-                        <div class="d-none d-lg-block" ><img src="{{ asset('assets/images/cart_icon/bookmark.svg') }}"> Проведено 0 занятий</div>
+                        <div class="d-none d-lg-block" ><img src="{{ asset('assets/images/cart_icon/bookmark.svg') }}"> Проведено {{ count($mentor->lessons) }} {{ trans_choice('занятие|занятия|занятий', count($mentor->lessons)) }}</div>
                         @if($mentor->isLocation())
                         <div><img src="{{ asset('assets/images/cart_icon/geo2.svg') }}"> {{ $mentor->getLocationString() }}</div>
                         @endif
