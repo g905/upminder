@@ -23,9 +23,14 @@ use App\Models\CategoryTag;
 use App\Models\Review;
 
 class FrontMentorController extends Controller {
+
+    public function card($id) {
+        return view('front.mentor_new', ['mentor' => Mentor::find($id)]);
+    }
+
     /* Карточка */
 
-    public function card($id, Request $request) {
+    public function card_old($id, Request $request) {
 
         $rec = Mentor::find($id);
         if (!$rec) {

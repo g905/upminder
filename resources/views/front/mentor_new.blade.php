@@ -1,60 +1,64 @@
-@extends('layouts/front/front')
+@extends('layouts.front.front')
 
 @section('content')
+
 <div class=dark_block_head>
     <!-- начинается карточка -->
     <div class=dark_mentor_block>
-        <a href="{{ route('front.mentors') }}" class=backtolisting><img src="{{ asset('images/back.svg') }}"> Вернуться к списку менторов</a>
+        <a href="{{ route('front.mentors') }}" class=backtolisting><img src="{{ asset('assets/images/back.svg') }}"> Вернуться к списку менторов</a>
         <div class=cart_min_block>
             <div class="row">
                 <div class="col-lg-3 ">
-                    <div style="width: 100%; height: 250px; background: #f1f1f1; border-radius: 15px; background-image: url({{ route('get.avatar', $rec->avatar) }}); background-size: cover;">
-                        <img src="{{ route('get.avatar', $rec->avatar) }}" class=img-fluid style="width:100%; display: none;">
+                    <div style="width: 100%; height: 250px; background: #f1f1f1; border-radius: 15px; background-image: url({{ Storage::disk('public')->url('avatar/' . $mentor->avatar) }}); background-size: cover;">
+                        <img src="{{ Storage::disk('public')->url('avatar/' . $mentor->avatar) }}" class=img-fluid style="width:100%; display: none;">
                     </div>
                     <div class="d-flex justify-content-center">
                        <!--- <span class=mentorday>Ментор дня</span>  -->
                     </div>
                 </div>
                 <div class="col-lg-6 ">
-                    <h1>{{ $rec->first_name }} {{ $rec->last_name }}
-                        @if ($rec->is_verified)
-                        <img src="/verstka/images/cart_icon/verify.svg" class=verify>
+                    <h1>{{ $mentor->first_name }} {{ $mentor->last_name }}
+                        @if($mentor->verified)
+                        <span class='verified'>
+                            <img src='{{ asset("assets/images/cart_icon/verify.svg") }}' alt="verify-icon">
+                        </span>
                         @endif
                     </h1>
-                    <div class=prof>Ведущий программист в <a href=# class=company>Beeline <img src="/verstka/images/arrow-right.svg"></a></div>
-                    <div class=company_desc>{{ $rec->description }}</div>
+                    @if($mentor->getLastJob())
+                    <div class="prof">{{ $mentor->getLastJob()->position }} в <a href="#" class="company">{{ $mentor->getLastJob()->company->name }}</a></div>
+                    @endif
+                    <div class=company_desc>{{ $mentor->getLastJob()->description }}</div>
                     <div class=tag_block>
                         <!-- специальные теги  -->
-                        @if ($for_you)
-                        <a href=# class="tag spectag">Ментор сделает за вас&nbsp;<img src="/verstka/images/force.svg"></a>
+                        @if(count($mentor->getAdditionalServices()))
+                        <a href="#" class="tag spectag">Ментор сделает за вас&nbsp;<img src="{{ asset('assets/images/force.svg') }}"></a>
                         @endif
-                        @if ($rec->vip_status)
-                        <a href=# class="tag spectag">VIP-ментор&nbsp;<img src="/verstka/images/smile.svg"></a>
+                        @if($mentor->vip_status)
+                        <a href=# class="tag spectag">VIP-ментор&nbsp;<img src="{{ asset('assets/images/smile.svg') }}"></a>
                         @endif
                         <!-- конец блока -->
-                        @if ($tags)
-                        @foreach ($tags as $tag)
+                        @foreach($mentor->tags as $tag)
                         <a href="#" class="tag">{{ $tag->name }}</a>
                         @endforeach
-                        @endif
                     </div>
                     <div class=feature>
-                        <div class="d-none d-lg-block"> <img src="/verstka/images/cart_icon/rocket.svg"> Опыт {{ $rec->experience }} </div>
+                        <div class="d-none d-lg-block"> <img src="/verstka/images/cart_icon/rocket.svg"> Опыт {{ $mentor->experience }} </div>
                         <div class="d-none d-lg-block" ><img src="/verstka/images/cart_icon/bookmark.svg"> Проведено 0 занятий</div>
-                        <div  ><img src="/verstka/images/cart_icon/geo2.svg"> {{ $country }}, {{ $city }}</div>
-                        <div><img src="/verstka/images/cart_icon/globe.svg"> Русский, English</div>
+                        <div  ><img src="/verstka/images/cart_icon/geo2.svg"> {{ $mentor->getLocationString() }}</div>
+                        <div><img src="/verstka/images/cart_icon/globe.svg"> {{ $mentor->getLanguagesString() }}</div>
                     </div>
                 </div>
                 <div class="col-lg-3 ">
-                    <div class=float_price_block>
-                        @if ($first_service->new_price)
-                        <span class=active_price>{{ $first_service->new_price }} <span class=rub>Р</span></span>
-                        <span class=old_price>{{ $first_service->old_price }} <span class=rub>Р</span></span>
-                        <span class=active_price>/час</span>
-                        @else
+                    <div class="float_price_block">
 
+                        @if($mentor->getDefaultService())
+                        <span class="active_price">{{ $mentor->getActivePrice() }}  <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span>
+                        <span class="old_price">{{ $mentor->getDefaultService()->price }} <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span>
+                        <span class="active_price">/час</span>
+                        <div class="sale">1-ое занятие - 100%</div>
+                        @else
+                        <div class="sale">Цена по запросу</div>
                         @endif
-                        <div class=sale>{{ $first_service->service }} @if ($first_service->discount)(-{{ $first_service->discount }}%@endif</div>
                         <div style="margin-top:50px;"><a href=# class=request  data-bs-toggle="modal" data-bs-target="#personalmentormodal">Записаться</a> <a href=#more class=enter>Подробнее</a>  </div>
                     </div>
                 </div>
@@ -79,12 +83,12 @@
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{!! $rec->description !!}</div>
-                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{!! $rec->help_text !!}</div>
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">{!! $mentor->description !!}</div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">{!! $mentor->help_text !!}</div>
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                            @if ($this_edu)
-                            @foreach ($this_edu as $edu)
-                            <p>С {{ $edu->date_start }} по {{ $edu->date_end }}</p>
+                            @if (count($mentor->educations))
+                            @foreach ($mentor->educations as $edu)
+                            <p>С {{ date('d.m.Y', strtotime($edu->date_start)); }} по {{ date('d.m.Y', strtotime($edu->date_end)); }}</p>
                             <p><strong>{{ $edu->course }} в "{{ $edu->school }}"</strong></p>
                             @if ($edu->present)
                             <p><i>Продолжает обучение</i></p>
@@ -94,28 +98,25 @@
                         </div>
                         <div class="tab-pane fade" id="nav-cv" role="tabpanel" aria-labelledby="nav-contact-tab">
 
-                            <div class=exp>Опыт работы: {{ $rec->experience }} </div>
+                            <div class=exp>Опыт работы: {{ $mentor->experience }} </div>
 
+                            @if (count($mentor->jobs))
 
-
-
-
-                            @if ($this_exp)
-
-                            @foreach ($this_exp as $exp)
+                            @foreach ($mentor->jobs as $exp)
 
                             <table class=exp_table>
 
                                 <tr>
-                                    <td style="width:0%" >	@if ($exp->company->logo)
+                                    <td style="width:0%" >
+                                        @if ($exp->company->logo)
                                         <img src="{{ route('get.avatar', $exp->company->logo) }}" class=exp_logo>
                                         @endif</td>
                                     <td>
 
 
-                                        <p class=exp_note>@if ($rec->position) {{ $exp->position }} @else Должность не указана  @endif, {{ $exp->company->name }}</p>
+                                        <p class=exp_note>@if ($exp->position) {{ $exp->position }} @else Должность не указана  @endif, {{ $exp->company->name }}</p>
 
-                                        <p>С {{ $exp->date_start }} по {{ $exp->date_end }}</p>
+                                        <p>С {{ date('d.m.Y', strtotime($exp->date_start)); }} по {{ date('d.m.Y', strtotime($exp->date_end)) }}</p>
                                         @if ($exp->present)
                                         <p>По настоящее время</p>
                                         @endif
@@ -127,23 +128,28 @@
 
                             </table>
 
-
-
-
-
-
                             @endforeach
                             @endif
                         </div>
-                        <div class="tab-pane fade" id="nav-rev" role="tabpanel" aria-labelledby="nav-contact-tab">Отзывы</div>
+                        <div class="tab-pane fade" id="nav-rev" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            @if(count($mentor->reviews))
+                            @foreach($mentor->reviews as $review)
+                            <div>{{ $review->author }}</div>
+                            <div>{{ $review->email }}</div>
+                            <div>{{ $review->text }}</div>
+                            @endforeach
+                            @else
+                            <div>Отзывов пока нет.</div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
             <h2 class=stz>Стоимость занятий</h2>
             <div class=service_block>
                 <!-- тут надо придумать цикл  который будет выстраивать по три блока в строку -->
-                @if ($this_services)
-                @foreach ($this_services as $serv)
+                @if (count($mentor->services))
+                @foreach ($mentor->services as $serv)
 
                 @if ($serv->currency_id !== 1)
                 @continue
@@ -151,7 +157,7 @@
 
                 <div class=white_block >
                     <div>{{ $serv->service->name }}</div>
-                    <span class=active_price>{{ $serv->price }} <span class=rub>Р</span></span><span class=active_price>/час</span>
+                    <span class=active_price>{{ $serv->price }} <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span><span class=active_price>/час</span>
                     @if ($serv->discount > 0)
                     <div class=sale>Скидка - {{ $serv->discount }}%</div>
                     @endif
@@ -163,18 +169,18 @@
             <h2>Дополнительные услуги</h2>
             <div class=service_block>
                 <!-- тут надо придумать цикл  который будет выстраивать по три блока в строку -->
-                @if ($this_services)
-                @foreach ($this_services as $serv)
+                @if (count($mentor->services))
+                @foreach ($mentor->services as $serv)
 
 
 
-                @if ($serv->currency_id !== 2)
+                @if ($serv->service->type_service !== 2)
                 @continue
                 @endif
 
                 <div class=white_block >
                     <div>{{ $serv->service->name }}</div>
-                    <span class=active_price>{{ $serv->price }} <span class=rub>Р</span></span><span class=active_price>/час</span>
+                    <span class=active_price>{{ $serv->price }} <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span><span class=active_price>/час</span>
                     @if ($serv->discount > 0)
                     <div class=sale>Скидка - {{ $serv->discount }}%</div>
                     @endif
@@ -239,4 +245,33 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function () {
+        let block = $('.float_price_block');
+        let faq_block = $('.cart_faq_block');
+        $(window).scroll(function () {
+
+            if ($(window).scrollTop() < 400) {
+                $(block).css('position', 'fixed');
+            } else
+            if ($(window).scrollTop() > ($(faq_block).offset().top - 600)) {
+                $(block).css('position', 'absolute');
+                $(block).css('top', ($(faq_block).offset().top - 300) + "px");
+            } else if ($(window).scrollTop() < ($(faq_block).offset().top - 300)) {
+                $(block).css('position', 'fixed');
+                $(block).css('top', (300) + "px");
+            }
+        })
+
+    })
+</script>
+
+<style>
+    .float_price_block {
+        width: 400px;
+    }
+</style>
 @endsection

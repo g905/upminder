@@ -116,12 +116,24 @@ class Mentor extends Model {
         return $this->belongsToMany(Language::class, 'mentor_languages');
     }
 
+    public function educations() {
+        return $this->hasMany(Education::class);
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class)->where(['active' => 1]);
+    }
+
     public function getLanguagesString() {
         return implode(', ', $this->languages->pluck('name')->toArray());
     }
 
     public function getLastJob() {
         return MentorSingleExperience::where(['mentor_id' => $this->id])->orderByDesc('id')->first() ?? false;
+    }
+
+    public function getLocationString() {
+        return Country::find($this->id)->name . ", " . City::find($this->id)->name;
     }
 
     public function getPrimaryServices() {

@@ -13,10 +13,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Education query()
  * @mixin \Eloquent
  */
-class Education	 extends Model {
-	
+class Education extends Model {
+
     use HasFactory;
-	
-	protected $fillable = ['name'];
-	
+
+    protected $fillable = ['name'];
+    protected $table = "mentor_single_educations";
+
 }
