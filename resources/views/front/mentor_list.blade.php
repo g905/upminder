@@ -7,6 +7,7 @@
         <form id="mentorSearch">
             <input type="hidden" class="cat" name="cat" value="">
             <input type="hidden" class="sort" name="sort" value="">
+            <input type="hidden" id="page" name="page" value="1">
             <div class="d-none d-sm-block">
                 <div class="row" >
                     <div class="col-xs-6 col-md-8 col-lg-10 keysList position-relative" style="border:0px solid red">
@@ -267,6 +268,14 @@
 
 
     });
+
+
+
+
+
+
+
+
 </script>
 
 

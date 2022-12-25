@@ -170,6 +170,9 @@ class Mentor extends Model {
         $forYou = $vip = false;
 
         foreach ($form as $row) {
+            if ($row["name"] === "page") {
+                $page = $row["value"];
+            }
             if ($row["name"] === "tag") {
                 $tags[] = $row["value"];
             }
@@ -217,8 +220,9 @@ class Mentor extends Model {
         }
 
         self::mentorsSort($q, $sort);
-
-        $mentors = $q->get();
+        //echo "<pre>";
+        //die(print_r($page));
+        $mentors = $q->paginate(2, ['*'], 'page', $page);
 
         return $mentors;
     }
@@ -239,7 +243,7 @@ class Mentor extends Model {
                 $q->orderBy('mentor_single_services.price', 'desc');
                 break;
             default:
-                $q->inRandomOrder();
+                //$q->inRandomOrder();
                 break;
         }
 
