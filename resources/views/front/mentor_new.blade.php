@@ -43,10 +43,14 @@
                         @endforeach
                     </div>
                     <div class=feature>
-                        <div class="d-none d-lg-block"> <img src="/verstka/images/cart_icon/rocket.svg"> Опыт {{ $mentor->experience }} </div>
-                        <div class="d-none d-lg-block" ><img src="/verstka/images/cart_icon/bookmark.svg"> Проведено 0 занятий</div>
-                        <div  ><img src="/verstka/images/cart_icon/geo2.svg"> {{ $mentor->getLocationString() }}</div>
-                        <div><img src="/verstka/images/cart_icon/globe.svg"> {{ $mentor->getLanguagesString() }}</div>
+                        <div class="d-none d-lg-block"> <img src="{{ asset('assets/images/cart_icon/rocket.svg') }}"> Опыт {{ $mentor->experience }} </div>
+                        <div class="d-none d-lg-block" ><img src="{{ asset('assets/images/cart_icon/bookmark.svg') }}"> Проведено 0 занятий</div>
+                        @if($mentor->isLocation())
+                        <div><img src="{{ asset('assets/images/cart_icon/geo2.svg') }}"> {{ $mentor->getLocationString() }}</div>
+                        @endif
+                        @if(count($mentor->languages))
+                        <div><img src="{{ asset('assets/images/cart_icon/globe.svg') }}"> {{ $mentor->getLanguagesString() }}</div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-3 ">

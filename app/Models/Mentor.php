@@ -132,6 +132,10 @@ class Mentor extends Model {
         return MentorSingleExperience::where(['mentor_id' => $this->id])->orderByDesc('id')->first() ?? false;
     }
 
+    public function isLocation() {
+        return Country::find($this->id) && City::find($this->id);
+    }
+
     public function getLocationString() {
         $string = Country::find($this->id) ? Country::find($this->id)->name : false;
         $string .= City::find($this->id) ? City::find($this->id)->name : false;
