@@ -136,6 +136,26 @@ class Mentor extends Model {
         return Country::find($this->id) && City::find($this->id);
     }
 
+    public function isMentorOfTheDay($catId) {
+        if (!$catId)
+            return false;
+        $exist = \App\Models\MentorWeek::where(['mentor_id' => $this->id])
+                        ->whereDate('date_start', '<=', \Carbon\Carbon::today()->toDateString())
+                        ->whereDate('date_end', '>=', \Carbon\Carbon::today()->toDateString())->first();
+        return (bool) $exist;
+    }
+
+    public static function getMentorWeekId($cat) {
+        if (!$cat)
+            return false;
+        return \App\Models\MentorWeek::whereHas('category', function ($qu) use ($cat) {
+                            $qu->where(['category_id' => $cat]);
+                        })
+                        ->whereDate('date_start', '<=', \Carbon\Carbon::today()->toDateString())
+                        ->whereDate('date_end', '>=', \Carbon\Carbon::today()->toDateString())
+                        ->first()->id;
+    }
+
     public function getLocationString() {
         $string = Country::find($this->id) ? Country::find($this->id)->name : false;
         $string .= City::find($this->id) ? City::find($this->id)->name : false;
@@ -238,8 +258,7 @@ class Mentor extends Model {
         }
 
         self::mentorsSort($q, $sort);
-        //echo "<pre>";
-        //die(print_r($page));
+
         $mentors = $q->paginate(2, ['*'], 'page', $page);
 
         return $mentors;

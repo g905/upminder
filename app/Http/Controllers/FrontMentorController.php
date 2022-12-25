@@ -862,7 +862,7 @@ class FrontMentorController extends Controller {
             $form = $request->get('form');
             $mentors = Mentor::getByForm($form);
 
-            $html = view('front.result', ['mentors' => $mentors]);
+            $html = view('front.result', ['mentors' => $mentors, 'catId' => $form[array_search("cat", $form)]['value']]);
             return $html->render();
         }
 

@@ -216,8 +216,10 @@
                 },
                 success: (data) => {
                     //console.log(data);
-                    $('.listing_block').fadeIn(200);
-                    $('.listing_block').append(data);
+                    $('.listing_block').fadeIn(200, function () {
+                        $('.listing_block').append(data);
+                    });
+
                 },
                 error: (err) => {
                     console.log(err);

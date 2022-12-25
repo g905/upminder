@@ -3,7 +3,10 @@
         <div class="col-lg-2 col-md-3  d-none d-md-block">
             <div style="text-align: center; position: relative">
                 <a href="{{ route('front.mentor', ['id' => $mentor->id]) }}">
-                    <span class="mentorday">Ментор дня</span><img src="{{ Storage::disk('public')->url('avatar/' . $mentor->avatar) }}" class="img-fluid">
+                    @if($mentor->isMentorOfTheDay($catId))
+                    <span class="mentorday">Ментор дня</span>
+                    @endif
+                    <img src="{{ Storage::disk('public')->url('avatar/' . $mentor->avatar) }}" class="img-fluid">
                 </a>
             </div>
         </div>

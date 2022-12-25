@@ -22,7 +22,7 @@
         </div>
 
     </div>
-    {{ $mentors->links('front.pagination', ['mentors' => $mentors]) }}
+    {{ $mentors->links('front.pagination', ['mentors' => $mentors, 'catId' => $catId]) }}
 
 </div>
 
