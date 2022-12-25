@@ -21,9 +21,15 @@
                 </span>
                 @endif
             </h3>
-            <div class="prof">Ведущий программист в <a href="#" class="company">Beeline</a></div>
-            <span class="address"><img src="{{ asset('assets/images/geo.svg') }}"> Moscow, Russia (+03:00 UTC)</span>
-            <span class="language"><img src="{{ asset('assets/images/lang.svg') }}"> Русский, English</span>
+            @if($mentor->getLastJob())
+            <div class="prof">{{ $mentor->getLastJob()->position }} в <a href="#" class="company">{{ $mentor->getLastJob()->company->name }}</a></div>
+            @endif
+            @if($mentor->timezone)
+            <span class="address"><img src="{{ asset('assets/images/geo.svg') }}"> {{ $mentor->timezone }}</span>
+            @endif
+            @if(count($mentor->languages))
+            <span class="language"><img src="{{ asset('assets/images/lang.svg') }}"> {{ $mentor->getLanguagesString() }}</span>
+            @endif
             <div class="desc d-none d-md-block">{{ $mentor->description }}</div>
             <div class="clearfix"></div>
             <div class="tag_block">

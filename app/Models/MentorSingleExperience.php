@@ -31,11 +31,15 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|MentorSingleExperience whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class MentorSingleExperience extends Model
-{
+class MentorSingleExperience extends Model {
+
     use HasFactory;
 
     public $table = 'mentor_single_experiences';
     protected $fillable = ['mentor_id', 'date_start', 'date_end', 'date_present', 'company_id', 'position'];
+
+    public function company() {
+        return $this->hasOne(Company::class, 'id', 'company_id');
+    }
 
 }

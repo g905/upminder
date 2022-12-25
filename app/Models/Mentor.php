@@ -108,6 +108,22 @@ class Mentor extends Model {
         return $this->getDefaultService()->currency;
     }
 
+    public function jobs() {
+        return $this->hasMany(MentorSingleExperience::class);
+    }
+
+    public function languages() {
+        return $this->belongsToMany(Language::class, 'mentor_languages');
+    }
+
+    public function getLanguagesString() {
+        return implode(', ', $this->languages->pluck('name')->toArray());
+    }
+
+    public function getLastJob() {
+        return MentorSingleExperience::where(['mentor_id' => $this->id])->orderByDesc('id')->first() ?? false;
+    }
+
     public function getPrimaryServices() {
         //hasManyThrough лучше
         $q = \Illuminate\Support\Facades\DB::table('mentors')
@@ -212,8 +228,13 @@ class Mentor extends Model {
     public static function sort(&$q, $type) {
         switch ($type) {
             case "lessons":
-                //$q->join('lessons', 'mentors.id', 'lessons.mentor_id');
-                //$q->orderBy('mentor_single_services.price', 'asc');
+                $q->join('lessons', 'mentors.id', 'lessons.mentor_id');
+                //->selectRaw(\Illuminate\Support\Facades\DB::raw('count(lessons.mentor_id) as cnt'))
+                //->having('cnt', '>', 0)
+                //->groupBy('lessons.mentor_id')
+                //->orderBy('cnt', 'asc');
+                //echo "<pre>";
+                //die(print_r($q->get()));
                 break;
             case "price_asc":
                 $q->orderBy('mentor_single_services.price', 'asc');
