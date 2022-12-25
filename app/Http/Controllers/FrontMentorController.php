@@ -853,6 +853,7 @@ class FrontMentorController extends Controller {
             return $tagsHtml->render();
         }
         if ($request->get("type") === "mentors") {
+            $form = null;
             $form = $request->get('form');
             $mentors = Mentor::getByForm($form);
 

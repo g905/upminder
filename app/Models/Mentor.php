@@ -190,60 +190,56 @@ class Mentor extends Model {
             }
         }
 
+        $q = Mentor::where(['is_active' => 1]);
 
-        $q = \Illuminate\Support\Facades\DB::table('mentors')
-                ->join('mentor_tags', 'mentors.id', 'mentor_tags.mentor_id')
-                ->join('category_tags', 'mentor_tags.tag_id', 'category_tags.id')
-                ->join('mentor_single_categories', 'mentors.id', 'mentor_single_categories.mentor_id')
-                ->join('mentor_categories', 'mentor_single_categories.category_id', 'mentor_categories.id')
-                ->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
+        if ($vip) {
+            $q->where(['vip_status' => 1]);
+        }
 
         if (count($tags)) {
-            $q->whereIn('mentor_tags.tag_id', $tags);
+            $q->whereHas('tags', function ($q) use ($tags) {
+                $q->whereIn('tag_id', $tags);
+            });
         }
 
         if ($cat) {
-            $q->where('mentor_single_categories.category_id', "=", $cat);
+            $q->whereHas('categories', function ($q) use ($cat) {
+                $q->where('category_id', $cat);
+            });
         }
 
         if ($forYou) {
-            $q->join('mentor_services', 'mentor_single_services.service_id', 'mentor_services.id')
-                    ->where('mentor_services.type_service', '=', 2)
-                    ->get("mentor_services.*");
+            $q->whereHas('services', function ($q) {
+                $q->whereHas('service', function ($q) {
+                    $q->where(['type_service' => 2]);
+                });
+            });
         }
 
-        if ($vip) {
-            $q->where('mentors.vip_status', '=', 1);
-        }
+        self::mentorsSort($q, $sort);
 
-        $q->where("mentors.is_active", "=", 1);
+        $mentors = $q->get();
 
-        self::sort($q, $sort);
-
-        $mentorIds = $q->distinct()->get(["mentors.*"]);
-
-        return $mentorIds;
+        return $mentors;
     }
 
-    public static function sort(&$q, $type) {
+    public static function mentorsSort(&$q, $type) {
         switch ($type) {
             case "lessons":
-                $q->join('lessons', 'mentors.id', 'lessons.mentor_id');
-                //->selectRaw(\Illuminate\Support\Facades\DB::raw('count(lessons.mentor_id) as cnt'))
-                //->having('cnt', '>', 0)
-                //->groupBy('lessons.mentor_id')
-                //->orderBy('cnt', 'asc');
-                //echo "<pre>";
-                //die(print_r($q->get()));
+                $q->withCount('lessons')->orderBy('lessons_count', 'desc');
                 break;
             case "price_asc":
+                $q->select(['mentors.*', 'mentor_single_services.price']);
+                $q->join('mentor_single_services', 'mentors.id', '=', 'mentor_single_services.mentor_id');
                 $q->orderBy('mentor_single_services.price', 'asc');
                 break;
             case "price_desc":
+                $q->select(['mentors.*', 'mentor_single_services.price']);
+                $q->join('mentor_single_services', 'mentors.id', '=', 'mentor_single_services.mentor_id');
                 $q->orderBy('mentor_single_services.price', 'desc');
                 break;
             default:
-                $q->orderBy('mentors.id', 'asc');
+                $q->inRandomOrder();
                 break;
         }
 
