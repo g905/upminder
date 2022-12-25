@@ -179,7 +179,8 @@ class Mentor extends Model {
                 ->join('mentor_tags', 'mentors.id', 'mentor_tags.mentor_id')
                 ->join('category_tags', 'mentor_tags.tag_id', 'category_tags.id')
                 ->join('mentor_single_categories', 'mentors.id', 'mentor_single_categories.mentor_id')
-                ->join('mentor_categories', 'mentor_single_categories.category_id', 'mentor_categories.id');
+                ->join('mentor_categories', 'mentor_single_categories.category_id', 'mentor_categories.id')
+                ->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
 
         if (count($tags)) {
             $q->whereIn('mentor_tags.tag_id', $tags);
@@ -190,8 +191,9 @@ class Mentor extends Model {
         }
 
         if ($forYou) {
-            //TODO: join single service and mentor service
-            //$q->where('mentors.vip_status', '=', 1);
+            $q->join('mentor_services', 'mentor_single_services.service_id', 'mentor_services.id')
+                    ->where('mentor_services.type_service', '=', 2)
+                    ->get("mentor_services.*");
         }
 
         if ($vip) {
@@ -202,24 +204,21 @@ class Mentor extends Model {
 
         self::sort($q, $sort);
 
-        $mentorIds = $q->distinct()->get(["mentors.id"]);
+        $mentorIds = $q->distinct()->get(["mentors.*"]);
 
         return $mentorIds;
     }
 
     public static function sort(&$q, $type) {
-
         switch ($type) {
             case "lessons":
                 //$q->join('lessons', 'mentors.id', 'lessons.mentor_id');
                 //$q->orderBy('mentor_single_services.price', 'asc');
                 break;
             case "price_asc":
-                $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
                 $q->orderBy('mentor_single_services.price', 'asc');
                 break;
             case "price_desc":
-                $q->join('mentor_single_services', 'mentors.id', 'mentor_single_services.mentor_id');
                 $q->orderBy('mentor_single_services.price', 'desc');
                 break;
             default:
