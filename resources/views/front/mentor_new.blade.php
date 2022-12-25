@@ -26,8 +26,9 @@
                     </h1>
                     @if($mentor->getLastJob())
                     <div class="prof">{{ $mentor->getLastJob()->position }} в <a href="#" class="company">{{ $mentor->getLastJob()->company->name }}</a></div>
-                    @endif
+
                     <div class=company_desc>{{ $mentor->getLastJob()->description }}</div>
+                    @endif
                     <div class=tag_block>
                         <!-- специальные теги  -->
                         @if(count($mentor->getAdditionalServices()))

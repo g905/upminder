@@ -133,7 +133,9 @@ class Mentor extends Model {
     }
 
     public function getLocationString() {
-        return Country::find($this->id)->name . ", " . City::find($this->id)->name;
+        $string = Country::find($this->id) ? Country::find($this->id)->name : false;
+        $string .= City::find($this->id) ? City::find($this->id)->name : false;
+        return $string;
     }
 
     public function getPrimaryServices() {
