@@ -79,7 +79,7 @@
     <div class="row" style="margin-top: 60px;">
         <div class="col-lg-8">
             <div class=tab_block>
-                <div style="width: 800px; overflow-x: scroll">
+                <div class=mentor_desc_tab_block>
                     <nav class=mentor_tabs >
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Описание</button>

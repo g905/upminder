@@ -1,6 +1,6 @@
 <div class="cart_block">
     <div class="row">
-        <div class="col-lg-2 col-md-3  d-none d-md-block">
+        <div class="col-lg-3 col-md-3  d-none d-md-block">
             <div style="text-align: center; position: relative">
                 <a href="{{ route('front.mentor', ['id' => $mentor->id]) }}">
                     @if($mentor->isMentorOfTheDay($catId))
@@ -10,7 +10,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-7 col-md-5">
+        <div class="col-lg-6 col-md-5">
             <div class="d-block d-md-none" style="float:left; width: 30%; border:0px solid red; margin-right: 8px; margin-top: 20px;">
                 <a href="{{ route('front.mentor', ['id' => $mentor->id]) }}">
                     <span class="mentorday">Ментор дня</span><img src="{{ Storage::disk('public')->url('avatar/' . $mentor->avatar) }}" class="img-fluid">
