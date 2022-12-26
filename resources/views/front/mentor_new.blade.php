@@ -59,8 +59,8 @@
                     <div class="float_price_block">
 
                         @if($mentor->getDefaultService())
-                        <span class="active_price">{{ $mentor->getActivePrice() }}  <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span>
-                        <span class="old_price">{{ $mentor->getDefaultService()->price }} <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span>
+                        <span class="active_price">{{ $mentor->getActivePrice() }}  @if($mentor->getDefaultCurrency()->code === "rub") <span class='rub'>Р</span> @else <span>$</span> @endif</span>
+                        <span class="old_price">{{ $mentor->getDefaultService()->price }} @if($mentor->getDefaultCurrency()->code === "rub") <span class='rub'>Р</span> @else <span>$</span> @endif</span>
                         <span class="active_price">/час</span>
                         <div class="sale">1-ое занятие - 100%</div>
                         @else
@@ -158,13 +158,13 @@
                 @if (count($mentor->services))
                 @foreach ($mentor->services as $serv)
 
-                @if ($serv->currency_id !== 1)
+                @if ($serv->service->type_service !== 1)
                 @continue
                 @endif
 
                 <div class=white_block >
                     <div>{{ $serv->service->name }}</div>
-                    <span class=active_price>{{ $serv->price }} <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span><span class=active_price>/час</span>
+                    <span class=active_price>{{ $serv->price }} @if($mentor->getDefaultCurrency()->code === "rub") <span class='rub'>Р</span> @else <span>$</span> @endif</span><span class=active_price>/час</span>
                     @if ($serv->discount > 0)
                     <div class=sale>Скидка - {{ $serv->discount }}%</div>
                     @endif
@@ -187,7 +187,7 @@
 
                 <div class=white_block >
                     <div>{{ $serv->service->name }}</div>
-                    <span class=active_price>{{ $serv->price }} <span class='rub'>{{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span></span><span class=active_price>/час</span>
+                    <span class=active_price>{{ $serv->price }} @if($mentor->getDefaultCurrency()->code === "rub") <span class='rub'>Р</span> @else <span>$</span> @endif</span><span class=active_price>/час</span>
                     @if ($serv->discount > 0)
                     <div class=sale>Скидка - {{ $serv->discount }}%</div>
                     @endif

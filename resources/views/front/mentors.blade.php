@@ -52,8 +52,8 @@
         <div class="col-lg-3 col-md-4" >
             <div class="static_price_block">
                 @if($mentor->getDefaultService())
-                <span class="active_price">{{ $mentor->getActivePrice() }}  {{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span>
-                <span class="old_price">{{ $mentor->getDefaultService()->price }} {{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span>
+                <span class="active_price">{{ $mentor->getActivePrice() }}  @if($mentor->getDefaultCurrency()->code === "rub") <span class='rub'>Р</span> @else <span>$</span> @endif</span>
+                <span class="old_price">{{ $mentor->getDefaultService()->price }} @if($mentor->getDefaultCurrency()->code === "rub") <span class='rub'>Р</span> @else <span>$</span> @endif</span>
                 <span class="active_price">/час</span>
                 <div class="sale">1-ое занятие - {{ $mentor->getDefaultService()->discount }} %</div>
                 @else
