@@ -861,9 +861,10 @@ class FrontMentorController extends Controller {
         if ($request->get("type") === "mentors") {
 
             $form = $request->get('form');
+            $catId = $form[array_search("cat", $form)]['value'];
             $mentors = Mentor::getByForm($form);
 
-            $html = view('front.result', ['mentors' => $mentors, 'catId' => $form[array_search("cat", $form)]['value']]);
+            $html = view('front.result', ['mentors' => $mentors, 'mentorOfTheDay' => Mentor::getMentorOfTheDay($catId), 'catId' => $catId]);
             return $html->render();
         }
 

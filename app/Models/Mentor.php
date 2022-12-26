@@ -136,6 +136,10 @@ class Mentor extends Model {
         return Country::find($this->id) && City::find($this->id);
     }
 
+    public static function getMentorOfTheDay($catId) {
+        return Mentor::find(self::getMentorWeekId($catId));
+    }
+
     public function isMentorOfTheDay($catId) {
         if (!$catId)
             return false;
@@ -146,14 +150,15 @@ class Mentor extends Model {
     }
 
     public static function getMentorWeekId($cat) {
-        if (!$cat)
+        if (!$cat) {
             return false;
+        }
         return \App\Models\MentorWeek::whereHas('category', function ($qu) use ($cat) {
                             $qu->where(['category_id' => $cat]);
                         })
                         ->whereDate('date_start', '<=', \Carbon\Carbon::today()->toDateString())
                         ->whereDate('date_end', '>=', \Carbon\Carbon::today()->toDateString())
-                        ->first()->id;
+                        ->first()->mentor_id;
     }
 
     public function getLocationString() {
@@ -183,7 +188,6 @@ class Mentor extends Model {
     public static function findCats($str) {
 
         $catIds = $str === "" ? MentorCategory::all(["id", "parent_id", "name"]) : MentorCategory::where("name", "like", "%" . $str . "%")->get(["id", "parent_id", "name"]);
-
         $parentIds = MentorCategory::whereIn('id', $catIds->pluck('parent_id'))->get(['id', 'name']);
 
         return (count($catIds) && count($parentIds)) ? ["cats" => $catIds, "parents" => $parentIds] : false;
@@ -219,6 +223,7 @@ class Mentor extends Model {
 
             if ($row["name"] === "cat") {
                 $cat = $row["value"];
+                $mentorDay = self::getMentorWeekId($cat);
             }
 
             if ($row["name"] == "for_you") {
@@ -246,9 +251,11 @@ class Mentor extends Model {
         }
 
         if ($cat) {
-            $q->whereHas('categories', function ($q) use ($cat) {
-                $q->where('category_id', $cat);
+            $q->whereHas('categories', function ($q) use ($cat, $mentorDay) {
+                $q->where('mentor_categories.id', $cat)
+                        ->where('mentor_single_categories.mentor_id', "!=", $mentorDay);
             });
+            //$mentorOfTheDay = self::find($mentorDay);
         }
 
         if ($forYou) {
@@ -262,6 +269,11 @@ class Mentor extends Model {
         self::mentorsSort($q, $sort);
 
         $mentors = $q->paginate(2, ['*'], 'page', $page);
+
+        //прихерачиваем ментора дня на первую страницу на первое место
+        //if (!$page || $page == 1) {
+        //    $mentors->prepend($mentorOfTheDay);
+        //}
 
         return $mentors;
     }
