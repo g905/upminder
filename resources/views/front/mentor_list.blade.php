@@ -291,23 +291,28 @@
         background: #fff;
         color: #666;
         display: block;
-        border-radius: 5px;
-        padding: 1rem 0;
+        border-radius: 16px;
         z-index: 999;
-    }
+        width: 98%;
+
+        padding:0px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        }
     .parent {
-        color: #aaa;
-        padding: 0 1rem;
+        color: black;
+        padding: 0 20px;
     }
     .child {
-
-        padding: 0 1rem;
+  color: black;
+padding:10px;
+        padding-left: 40px;
     }
     .child:hover {
-        opacity: .8;
+
         cursor: pointer;
-        background: #37e45e;
-        color: white;
+        background: #37E45E;
+        color: black;
     }
     .cats-tree {
     }
