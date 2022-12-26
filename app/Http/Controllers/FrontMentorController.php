@@ -845,6 +845,7 @@ class FrontMentorController extends Controller {
     }
 
     public function cats(Request $request) {
+
         if (!$request->ajax()) {
             return false;
         }
@@ -867,7 +868,8 @@ class FrontMentorController extends Controller {
         }
 
         if ($request->get("type") === "cats") {
-            $searchStr = $request->get("val");
+            $searchStr = $request->get("val")["val"] ?? "";
+
             $cats = Mentor::findCats($searchStr);
 
             //если найдены категории, показываем их

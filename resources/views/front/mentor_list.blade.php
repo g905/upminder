@@ -77,7 +77,10 @@
         const searchCats = (toSend) => {
             $.ajax({
                 headers: headers,
-                data: toSend,
+                data: {
+                    type: "cats",
+                    val: toSend
+                },
                 method: "post",
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
@@ -133,6 +136,9 @@
             //searchCats(toSend);
         });
 
+        $(input).click(function () {
+            searchCats("");
+        })
 
 
 

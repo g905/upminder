@@ -181,7 +181,9 @@ class Mentor extends Model {
     }
 
     public static function findCats($str) {
-        $catIds = MentorCategory::where("name", "like", "%" . $str . "%")->get(["id", "parent_id", "name"]);
+
+        $catIds = $str === "" ? MentorCategory::all(["id", "parent_id", "name"]) : MentorCategory::where("name", "like", "%" . $str . "%")->get(["id", "parent_id", "name"]);
+
         $parentIds = MentorCategory::whereIn('id', $catIds->pluck('parent_id'))->get(['id', 'name']);
 
         return (count($catIds) && count($parentIds)) ? ["cats" => $catIds, "parents" => $parentIds] : false;
