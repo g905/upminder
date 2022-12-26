@@ -873,7 +873,7 @@ class FrontMentorController extends Controller {
 
             $cats = Mentor::findCats($searchStr);
 
-            //если найдены категории, показываем их
+            //если найдены категории, показываем  их
             if ($cats) {
                 $catHtml = view('front.cats', ['catsTree' => $cats]);
                 return $catHtml->render();

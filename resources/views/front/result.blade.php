@@ -16,7 +16,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="mentors_list">
-            <!-- Отдельно ментор дня -->
+            <!--  Отдельно ментор дня  -->
             @include('front.mentors', ['mentor' => $mentorOfTheDay])
 
             @foreach($mentors as $mentor)

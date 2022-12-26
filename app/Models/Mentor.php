@@ -272,7 +272,7 @@ class Mentor extends Model {
 
         //прихерачиваем ментора дня на первую страницу на первое место
         //if (!$page || $page == 1) {
-        //    $mentors->prepend($mentorOfTheDay);
+        //   $mentors->prepend($mentorOfTheDay);
         //}
 
         return $mentors;
