@@ -854,7 +854,7 @@ class FrontMentorController extends Controller {
             }
             $catId = $request->get("id");
             $tags = Mentor::getTagsByCatId($catId);
-            $tagsHtml = view('front.tags', ['tags' => $tags, 'catName' => \App\Models\MentorCategory::find($catId)->name]);
+            $tagsHtml = view('front.tags', ['tags' => $tags, 'catName' => \App\Models\MentorCategory::where(["id" => $catId])->first()->name]);
             return $tagsHtml->render();
         }
         if ($request->get("type") === "mentors") {

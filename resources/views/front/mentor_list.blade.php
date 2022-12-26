@@ -89,17 +89,14 @@
                 },
                 success: (data) => {
                     console.log(data);
-                    $('.search-hint').fadeIn(200, function () {
-                        $('.search-hint').append(data);
-                    });
-                    sendForm();
+                    $('.search-hint').append(data).fadeIn(200);
+                    //sendForm();
 
                 },
                 error: (err) => {
                     console.log(err);
                     if (err.status === 404) {
-                        $('.listing_block').html(JSON.parse(err.responseText).html);
-                        $('.listing_block').fadeIn(200);
+                        $('.listing_block').html(JSON.parse(err.responseText).html).fadeIn(200);
                     }
                 }
             });
@@ -129,8 +126,9 @@
             //  $('.search-hint').html("");
             // return false;
             //}
+            //console.log("focus");
             //let toSend = {
-            //    val: $(this).val()
+            // val: $(this).val()
             //};
             //searchCats(toSend);
         });
@@ -154,18 +152,14 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
-                    $('.mentors_list').html("");
-                    $('.tags_block').html("");
-                    $('.tags_block').fadeOut(200, () => {
-
-                    });
+                    //$('.mentors_list').html("");
+                    $('.tags_block').html("").fadeOut(200);
                 },
                 success: (data) => {
                     console.log(data);
-                    $('.tags_block').append(data);
+                    $('.tags_block').append(data).fadeIn(200);
                     $('label.tag[data-id="' + active_id + '"]').find('[type="checkbox"]').attr('checked', true);
                     $('label.tag[data-id="' + active_id + '"]').addClass('checked');
-                    $('.tags_block').fadeIn(200);
                     sendForm();
                 },
                 error: (err) => {
@@ -214,15 +208,12 @@
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
                     $('.preloader').fadeIn(200);
-                    $('.listing_block').fadeOut(200);
-                    $('.listing_block').html("");
+                    $('.listing_block').fadeOut(200).html("");
                 },
                 success: (data) => {
                     $('.preloader').fadeOut(200);
                     //console.log(data);
-                    $('.listing_block').fadeIn(200, function () {
-                        $('.listing_block').append(data);
-                    });
+                    $('.listing_block').append(data).fadeIn(200);
 
                 },
                 error: (err) => {
@@ -294,30 +285,23 @@
         position: absolute;
         top: 70px;
         background: #fff;
-        color: #666;
-        display: block;
+        color: #888;
+        display: none;
         border-radius: 16px;
         z-index: 999;
         width: 98%;
-
-        padding:0px;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        }
+        padding:16px;
+    }
     .parent {
-        color: black;
-        padding: 0 20px;
     }
     .child {
-  color: black;
-padding:10px;
-        padding-left: 40px;
+        margin-left: 20px;
+        cursor: pointer;
+        color: #37E45E;
     }
     .child:hover {
-
-        cursor: pointer;
-        background: #37E45E;
-        color: black;
+        opacity: .8;
+        text-decoration: underline;
     }
     .cats-tree {
     }
