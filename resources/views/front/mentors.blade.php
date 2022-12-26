@@ -55,7 +55,7 @@
                 <span class="active_price">{{ $mentor->getActivePrice() }}  {{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span>
                 <span class="old_price">{{ $mentor->getDefaultService()->price }} {{ $mentor->getDefaultCurrency()->code === "rub" ? "Р" : "$" }}</span>
                 <span class="active_price">/час</span>
-                <div class="sale">1-ое занятие - 100%</div>
+                <div class="sale">1-ое занятие - {{ $mentor->getDefaultService()->discount }} %</div>
                 @else
                 <div class="sale">Цена по запросу</div>
                 @endif
