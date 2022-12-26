@@ -158,7 +158,7 @@
                 @if (count($mentor->services))
                 @foreach ($mentor->services as $serv)
 
-                @if ($serv->currency_id !== 1)
+                @if ($serv->service->type_service !== 1)
                 @continue
                 @endif
 
