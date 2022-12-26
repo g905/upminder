@@ -44,6 +44,8 @@
     </div>
 </div>
 
+<div class="preloader"></div>
+
 @endsection
 
 @section('scripts')
@@ -53,6 +55,7 @@
     /******* by g905 tg://@g9051 ********/
 
     $(document).ready(() => {
+
 
 
         $('body').on('click', '.form-check-input', function () {
@@ -210,11 +213,12 @@
                 dataType: "html",
                 url: "{{ route('front.mentors.cats') }}",
                 beforeSend: () => {
-
+                    $('.preloader').fadeIn(200);
                     $('.listing_block').fadeOut(200);
                     $('.listing_block').html("");
                 },
                 success: (data) => {
+                    $('.preloader').fadeOut(200);
                     //console.log(data);
                     $('.listing_block').fadeIn(200, function () {
                         $('.listing_block').append(data);
@@ -269,6 +273,7 @@
         });
 
 
+        sendForm();
     });
 
 
@@ -369,6 +374,19 @@ padding:10px;
     label.tag.checked .tag-close {
         color: #666;
         opacity: 1;
+    }
+
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        align-content: center;
+        justify-content: center;
+        background: rgba(255,255,255,.0);
+        backdrop-filter: blur(1px) grayscale(.5);
     }
 
 </style>
